@@ -1,0 +1,106 @@
+<div class="card col-md-4 offset-4">
+  <div class="card-header text-white bg-info d-flex justify-content-between">
+    <h4>Ajouter un produit </h4>
+    <button class="btn btn-danger"  [routerLink]="['../list-produit']" >
+      <i class="fa fa-arrow-left"></i>
+    </button>
+   </div>
+    <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="form-row">
+        <div class="mb-3">
+
+          <label>Nom</label>
+          <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="produitDto.nom" name="nom" required
+            minlength="4" maxlength="30" required #nomVar="ngModel"
+            [ngClass]="{'is-invalid': nomVar.touched && !nomVar.valid}" />
+
+          <div class="invalid-feedback">
+            <span *ngIf="nomVar.errors?.['required']">
+              Entrez le nom du produit
+            </span>
+            <span *ngIf="nomVar.errors?.['minlength']">
+              Minimum 4 caracteres
+            </span>
+            <span *ngIf="nomVar.errors?.['maxlength']">
+              Maximum 30 caracteres
+            </span>
+          </div>
+
+        <div class="mb-3">
+          <label>quantite</label>
+          <input type="number" class="form-control" placeholder="quantite du produit" [(ngModel)]="produitDto.prixAchat"
+            name="quantite" required minlength="4" maxlength="30" required #quantiteVar="ngModel"
+            [ngClass]="{'is-invalid': quantiteVar.touched && !quantiteVar.valid}" />
+
+          <div class="invalid-feedback">
+            <span *ngIf="quantiteVar.errors?.['required']">
+              Entrez la quantite du produit
+            </span>
+            <span *ngIf="quantiteVar.errors?.['minlength']">
+              Minimum 4 caracteres
+            </span>
+            <span *ngIf="quantiteVar.errors?.['maxlength']">
+              Maximum 30 caracteres
+            </span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label>code</label>
+          <input type="text" class="form-control" placeholder="code du produit" [(ngModel)]="produitDto.codeproduit"
+            name="code" required minlength="4" maxlength="30" required #codeVar="ngModel"
+            [ngClass]="{'is-invalid': codeVar.touched && !codeVar.valid}" />
+
+          <div class="invalid-feedback">
+            <span *ngIf="codeVar.errors?.['required']">
+              Entrez le code du produit
+            </span>
+            <span *ngIf="codeVar.errors?.['minlength']">
+              Minimum 4 caracteres
+            </span>
+            <span *ngIf="codeVar.errors?.['maxlength']">
+              Maximum 30 caracteres
+            </span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label>designation</label>
+          <input type="text" class="form-control" placeholder="designation du produit"
+            [(ngModel)]="produitDto.designation" name="designation" required minlength="4" maxlength="30" required
+            #designationVar="ngModel" [ngClass]="{'is-invalid': designationVar.touched && !designationVar.valid}" />
+
+          <div class="invalid-feedback">
+            <span *ngIf="designationVar.errors?.['required']">
+              Entrez la designation du produit
+            </span>
+            <span *ngIf="designationVar.errors?.['minlength']">
+              Minimum 4 caracteres
+            </span>
+            <span *ngIf="designationVar.errors?.['maxlength']">
+              Maximum 30 caracteres
+            </span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Catégorie</label>
+          <select class="form-control" name="categories" id="categories" [(ngModel)]="produitDto.categorieDto.id"
+            required>
+            <option *ngIf="!categories?.length">Aucune catégorie disponible</option>
+            <option *ngFor="let categorie of categories" value="{{categorie.id}}">{{categorie.nomcategorie}}</option>
+          </select>
+        </div>
+
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end mt-2">
+        <button class="btn btn-info " type="submit">Sauvegarder</button>
+      </div>
+    </form>
+
+  </div>
+</div>

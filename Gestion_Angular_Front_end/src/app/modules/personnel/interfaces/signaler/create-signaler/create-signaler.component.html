@@ -1,0 +1,71 @@
+
+<div class="card col-md-4 offset-4">
+  <div class="card-header text-white bg-info d-flex justify-content-between">
+   <h4>Ajouter une signalisation</h4>
+   <button class="btn btn-danger"  [routerLink]="['../listsignaler'] ">
+    <i class="fa fa-arrow-left"></i>
+  </button>
+  </div>
+ <div class="card-body">
+     <form (ngSubmit) = "onSubmit()">
+
+         <div class="form-row">
+           <div class="col-md-4 mb-3">
+
+                <label>Etat</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Hors service ou deteriore ou perte ou autre "
+                    [(ngModel)]="signalerDto.etat"
+                    name="etat" required minlength="4" maxlength="30"
+                    required
+                    #etatVar="ngModel"
+                    [ngClass]="{'is-invalid': etatVar.touched && !etatVar.valid}"
+                  />
+
+                  <div class="invalid-feedback">
+                      <span *ngIf="etatVar.errors?.['required']">
+                      Entrez votre etat
+                      </span>
+                      <span *ngIf="etatVar.errors?.['minlength']">
+                        Minimum 4 caracteres
+                      </span>
+                      <span *ngIf="etatVar.errors?.['maxlength']">
+                        Maximum 30 caracteres
+                      </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Nom du personel</label>
+                    <select class="form-control" name="personel" id="personels" [(ngModel)]="signalerDto.personelDto.id"
+                      required>
+                      <option *ngIf="!personels?.length">Aucun personel disponible</option>
+                      <option *ngFor="let personel of personels" value="{{personel.id}}">{{personel.nom}}</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Nom du materiel</label>
+                    <select class="form-control" name="produit" id="produits" [(ngModel)]="signalerDto.produitDto.id"
+                      required>
+                      <option *ngIf="!produits?.length">Aucune Materiel disponible</option>
+                      <option *ngFor="let produit of produits" value="{{produit.id}}">{{produit.nom}}</option>
+                    </select>
+                  </div>
+
+
+
+
+            </div>
+          </div>
+
+                <div class="d-flex justify-content-end mt-2">
+                  <button class="btn btn-info" type="submit">Sauvegarder</button>
+                </div>
+            <div class="form-row mb-3">
+              <div class="col-md-12"></div>
+            </div>
+    </form>
+
+  </div>
+</div>

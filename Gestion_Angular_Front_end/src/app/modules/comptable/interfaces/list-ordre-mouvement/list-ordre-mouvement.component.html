@@ -1,0 +1,115 @@
+
+
+
+
+<div class="col-12 text-center">
+
+</div>
+<div class="row text-center my-2 flex justify-content-between">
+  <div class="col-2">
+
+  </div>
+  <div class="col-4">
+    <h4 class="text-center">Ordre de Mouvement</h4>
+  </div>
+  <div class="col-2">
+    <a routerLink="/comptable/add-ordre-mouvement" class="btn btn-primary">
+      <i class="fa fa-plus"></i>
+      Ajouter
+    </a>
+  </div>
+</div>
+<div class="content mt-5">
+  <div class="row d-flex justify-content-between">
+    <div class="col-3 form-group">
+      <label for="itemsPerPage" class="form-label d-inline">
+        <!-- <i class="fa fa-list mx-2"></i>
+        Afficher -->
+      </label>
+      <!-- <input type="number" name="itemsPerPage" [(ngModel)]="itemsPerPage" class="form-control w-25 fw-bold d-inline"
+        (change)="itemsPerPageChanged()" id="itemsPerPage" min="1" max="100">
+      par page -->
+    </div>
+    <div class="col-4 form-group d-flex align-items-center">
+      <label class="form-label">
+        Filtrer par
+        <i class="fa fa-filter"></i>
+      </label>
+      <select class="form-select mx-2" name="filterBy"  >
+        <option selected>Filtrer par</option>
+        <option value="Magasin">Magasin</option>
+        <option value=">Detenteur">Detenteur</option>
+        <option value="Mise en consomation">Mise en consomation</option>
+        <option value="Divers">Divers</option>
+
+      </select>
+    </div>
+    <div class="form-group d-flex align-items-center col-3">
+      <label for="searchText" class="form-label">
+        <i class="fa fa-search"></i>
+      </label>
+      <input type="text" class="form-control mx-2" placeholder="Rechercher..."
+       >
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-2 mt-5 mb-5">
+            <div class="card">
+
+                <div class="card-body">
+                    <form id="checklistForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="originInput" class="form-label">Origine (Origin)</label>
+                                    <input type="text" class="form-control" id="originInput" name="origin" placeholder="origin">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="destinationInput" class="form-label">Destination</label>
+                                    <input type="text" class="form-control" id="destinationInput" name="destination" placeholder="destination">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Tableau -->
+    <table class="table table-responsive" #content>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Matiere</th>
+          <th [rowSpan]="2">Quantite</th>
+          <th>Quantite</th>
+          <th>Valeur</th>
+          <th>Valeur</th>
+          <th>Observation</th>
+      </thead>
+
+          <thead>
+            <tr>
+
+          <th>Compte</th>
+          <th>Designation</th>
+          <th>Unite</th>
+          <th>Total</th>
+          <th>Unitaire</th>
+          <th>Total</th>
+          <th></th>
+
+          <!-- ... Ajoutez d'autres colonnes ici ... -->
+          <th>Actions</th>
+        </tr>
+      </thead>

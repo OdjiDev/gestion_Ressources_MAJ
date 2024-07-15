@@ -1,0 +1,75 @@
+
+<div class="container d-flex justify-content-center">
+  <form [formGroup]="formProduit" (ngSubmit)="submitForm()">
+      <div class="text-center {{style}}" *ngIf="message">{{message}}</div>
+      <div class="card col-6 p-2">
+          <h5 class="card-header text-center p-2 bg-info">Formulaire de modification de produits</h5>
+          <div class="card-content">
+              <div class="form-group">
+                  <label for="code">Code</label>
+                  <input type="text" autofocus class="form-control" id="code" [(ngModel)]="produitDto.codeproduit"
+                      formControlName="code">
+                  <app-field-error-display [displayError]="isFieldValid('code')"
+                      errorMsg="Veuillez renseigner le code du département">
+                  </app-field-error-display>
+              </div>
+              <div class="form-group">
+                  <label for="nom">nom</label>
+                  <input type="text" class="form-control" id="nom" [(ngModel)]="produitDto.nom"
+                      formControlName="nom">
+                  <app-field-error-display [displayError]="isFieldValid('nom')"
+                      errorMsg="Veuillez renseigner le nom du département">
+                  </app-field-error-display>
+              </div>
+              <div class="form-group">
+                <label for="designation">designation</label>
+                <input type="text" class="form-control" id="designation" [(ngModel)]="produitDto.designation"
+                    formControlName="designation">
+                <app-field-error-display [displayError]="isFieldValid('designation')"
+                    errorMsg="Veuillez renseigner le designation du département">
+                </app-field-error-display>
+             </div>
+             <div class="form-group">
+              <label for="designation">designation</label>
+              <input type="text" class="form-control" id="designation" [(ngModel)]="produitDto.designation"
+                  formControlName="designation">
+              <app-field-error-display [displayError]="isFieldValid('designation')"
+                  errorMsg="Veuillez renseigner le designation du département">
+              </app-field-error-display>
+          </div>
+        </div>
+        <div class="form-group">
+         <label for="PrixAchat">PrixAchat</label>
+         <input type="text" class="form-control" id="PrixAchat" [(ngModel)]="produitDto.prixAchat"
+             formControlName="PrixAchat">
+         <app-field-error-display [displayError]="isFieldValid('PrixAchat')"
+             errorMsg="Veuillez renseigner le PrixAchat du département">
+         </app-field-error-display>
+     </div>
+           <!--   <div class="form-group">
+                  <label for="enseignantDto"> </label>
+                  <select id="enseignantDto" [(ngModel)]="produitDto.enseignantDto.id" class="form-control"
+                      formControlName="enseignantDto">
+                      <option>Selectionner</option>
+                      <option *ngFor="let enseignant of enseignantDtos" [ngValue]="enseignant.id">{{enseignant.nom}} {{enseignant.prenom}}
+                      </option>
+                  </select>
+                  <app-field-error-display [displayError]="isFieldValid('enseignantDto')"
+                      errorMsg="Veuillez renseigner le enseignant du département">
+                  </app-field-error-display> -->
+
+
+
+          <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary col-4 mx-auto" [disabled]="!formProduit.valid">
+                  <i class="fa fa-edit"></i>
+                  Modifier
+              </button>
+              <button routerLink="/admin/list-produit" class="btn btn-danger col-4 mx-auto">
+                  <i class="fa fa-arrow-left"></i>
+                  Annuler
+              </button>
+          </div>
+      </div>
+  </form>
+</div>

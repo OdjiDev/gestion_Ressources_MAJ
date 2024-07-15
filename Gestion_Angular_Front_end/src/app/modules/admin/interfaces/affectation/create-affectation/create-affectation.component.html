@@ -1,0 +1,130 @@
+<div class="card col-md-4 offset-4">
+  <div class="card-header text-white bg-info d-flex justify-content-between">
+   <h4>Ajouter une affectation </h4>
+   <button class="btn btn-danger" [routerLink]="['../list-affectation']" >
+    <i class="fa fa-arrow-left"></i>
+  </button>
+</div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+
+
+       <div class="mb-3">
+          <label class="form-label">Id du materiel</label>
+          <select class="form-control"   name="produits" id="produits" [(ngModel)]="affectationDto.produitDto.id"
+            required>
+            <option *ngIf="!produits?.length">Aucunproduit disponible</option>
+            <option *ngFor="let produit of produits" value="{{produit.id}}">id:{{produit.id}}=>{{produit.nom}}</option>
+          </select>
+        </div>
+
+
+       <div class="mb-3">
+        <label class="form-label">Nom du personel</label>
+        <select class="form-control"  placeholder="nom"  name="personels" id="personels" [(ngModel)]="affectationDto.personelDto.id"
+          required>
+          <option *ngIf="!personels?.length">Aucun personel disponible</option>
+          <option *ngFor="let personel of personels" value="{{personel.id}}"> {{personel.prenom}} {{personel.nom}} </option>
+        </select>
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Bureau</label>
+        <select class="form-control"  placeholder="nom"  name="bureaus" id="bureaus" [(ngModel)]="affectationDto.bureauDto.id"
+          required>
+          <option *ngIf="!bureaus?.length">Aucun bureau disponible</option>
+          <option *ngFor="let bureau of bureaus" value="{{bureau.id}}"> {{bureau.id}}:=> {{bureau.nom}} </option>
+        </select>
+      </div>
+      <!-- <div class="mb-3">
+        <label class="form-label">Prenom du personel</label>
+        <select class="form-control"  placeholder="prenom"  name="personels" id="personels" [(ngModel)]="affectationDto.personelDto.id"
+          required>
+          <option *ngIf="!personels?.length">Aucun prenom du personel disponible</option>
+          <option *ngFor="let personel of personels" value="{{personel.id}}">{{personel.prenom}}</option>
+        </select>
+      </div> -->
+
+          <!-- <div class=" mb-3">
+            <label>Quantite</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="quantite"  [(ngModel)]="affectationDto.quantite"
+              name="quantite"
+              required
+              minlength="1"
+              maxlength="30"
+              #quantiteVar="ngModel"
+              [ngClass]="{'is-invalid': quantiteVar.touched && !quantiteVar.valid}"
+            />
+
+            <div class="invalid-feedback">
+              <span *ngIf="quantiteVar.errors?.['required']">
+                Entrez le quantite
+              </span>
+              <span *ngIf="quantiteVar.errors?.['minlength']">
+                Minimum 4 caractères
+              </span>
+              <span *ngIf="quantiteVar.errors?.['maxlength']">
+                Maximum 30 caractères
+              </span>
+            </div>
+          </div> -->
+
+            <div class=" mb-3">
+              <label>Motif</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="motif du affectation"  [(ngModel)]="affectationDto.motif"
+                name="motif"
+                required
+                minlength="4"
+                maxlength="30"
+                #motifVar="ngModel"
+                [ngClass]="{'is-invalid': motifVar.touched && !motifVar.valid}"
+              />
+
+              <div class="invalid-feedback">
+                <span *ngIf="motifVar.errors?.['required']">
+                  Entrez le motif
+                </span>
+                <span *ngIf="motifVar.errors?.['minlength']">
+                  Minimum 4 caractères
+                </span>
+                <span *ngIf="motifVar.errors?.['maxlength']">
+                  Maximum 30 caractères
+                </span>
+              </div>
+            </div>
+
+              <div class="mb-3">
+                <label>Date </label>
+                <input
+                  type="date"  class="form-control"
+                  placeholder="JJ/MM/AAAA"
+                  [(ngModel)]="affectationDto.date"
+                  name="date"
+                  required
+                  #createdAtVar="ngModel"
+                  [ngClass]="{'is-invalid': createdAtVar.touched && !createdAtVar.valid}"
+                />
+
+                <div class="invalid-feedback">
+                  <span *ngIf="createdAtVar.errors?.['required']">
+                    Entrez la date
+                  </span>
+                </div>
+                </div>
+
+
+      <div class="d-flex justify-content-end mt-2">
+        <button class="btn btn-info" type="submit">Sauvegarder</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+

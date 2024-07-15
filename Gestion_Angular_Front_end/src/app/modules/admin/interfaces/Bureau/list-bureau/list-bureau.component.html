@@ -1,0 +1,160 @@
+<!-- show message in alert -->
+<div class="col-12 text-center">
+  <h5 [class]="style" role="alert" *ngIf="message">
+    {{ message }}
+  </h5>
+</div>
+<div class="row text-center my-2 flex justify-content-between">
+  <div class="col-2">
+    <button class="btn btn-success" (click)="generatePDF()">
+      <i class="fa fa-print"></i>
+      Imprimer
+    </button>
+  </div>
+  <div class="col-4">
+    <h4 class="text-center">Liste des bureaus</h4>
+  </div>
+  <div class="col-2">
+    <a routerLink="/admin/add-bureau" class="btn btn-primary">
+      <i class="fa fa-plus"></i>
+      Ajouter
+    </a>
+  </div>
+</div>
+<hr>
+<div class="content mt-2">
+  <div class="row d-flex justify-content-between">
+    <div class="col-3 form-group">
+      <label for="itemsPerPage" class="form-label d-inline">
+        <i class="fa fa-list mx-2"></i>
+        Afficher
+      </label>
+      <input type="number" name="itemsPerPage" [(ngModel)]="itemsPerPage" class="form-control w-25 fw-bold d-inline"
+        (change)="itemsPerPageChanged()" id="itemsPerPage" min="1" max="100">
+      par page
+    </div>
+    <div class="col-4 form-group d-flex align-items-center">
+      <label class="form-label">
+        <!-- Filtrer par -->
+        <i class="fa fa-filter"></i>
+      </label>
+      <select class="form-select mx-2" name="filterBy" [(ngModel)]="filterBy" (change)="filterByChanged()">
+        <option selected>Filtrer par</option>
+        <option value="code">Code</option>
+        <option value="libelle">Libelle</option>
+      </select>
+    </div>
+    <div class="form-group d-flex align-items-center col-3">
+      <label for="searchText" class="form-label">
+        <i class="fa fa-search"></i>
+      </label>
+      <input type="text" class="form-control mx-2" placeholder="Rechercher..." [(ngModel)]="searchText"
+        (keyup)="filterBureauLists()">
+    </div>
+  </div>
+  <!-- Tableau -->
+  <table class="table" #content>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Code</th>
+        <th>Nom</th>
+        <!-- ... Ajoutez d'autres colonnes ici ... -->
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Utilisez une boucle *ngFor pour afficher chaque étudiant -->
+      <tr *ngFor="let bureau of filteredBureaus, let i=index">
+        <td>{{ i+1 }}</td>
+        <td>{{ bureau.id }}</td>
+        <td>{{ bureau.nom }}</td>
+        <!-- <td>{{ bureau.enseignantDto.nom }} {{bureau.enseignantDto.prenom}}</td> -->
+        <!-- ... Affichez d'autres données de la bureau ... -->
+        <td>
+          <!-- Bouton Dropdown avec actions -->
+          <a class="btn btn-secondary" routerLink="/admin/update-bureau/{{bureau.id}}">
+            <i class="fa fa-edit"></i>
+            Modifier
+          </a>
+          <a class="btn btn-danger" (click)="deleteBureau(bureau.id)" data-bs-toggle="modal"
+          data-bs-target="#deleteModal">
+            <i class="fa fa-trash"></i>
+            Supprimer
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="col-12 text-center">
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link btn" (click)="goToPage(1)" aria-label="Première page">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link btn" (click)="goToPage(currentPage - 1)" aria-label="Page précédente">
+            <span aria-hidden="true">&lsaquo;</span>
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
+          <a class="page-link btn" (click)="goToPage(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link btn" (click)="goToPage(currentPage + 1)" aria-label="Page suivante">
+            <span aria-hidden="true">&rsaquo;</span>
+          </a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link btn" (click)="goToPage(totalPages)" aria-label="Dernière page">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-dialog-scrollable" id="deleteModal" tabindex="-1" aria-labelledby="createModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-info card-danger">
+        <h1 class="modal-title fs-5" id="createModalLabel">
+          Suppression
+        </h1>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        Etes-vous sur de vouloir supprimer cette bureau ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="fa fa-backward"></i>
+          Annuler
+        </button>
+        <button type="button" class="btn btn-danger" (click)="delete()"  data-bs-toggle="modal"
+            data-bs-target="#deleteModal">
+          <i class="fa fa-trash"></i>
+          Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

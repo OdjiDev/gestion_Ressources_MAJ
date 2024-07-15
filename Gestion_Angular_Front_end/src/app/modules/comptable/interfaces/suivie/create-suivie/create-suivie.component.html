@@ -1,0 +1,123 @@
+
+  <div class="card col-md-4 offset-4">
+    <div class="card-header text-white bg-info d-flex justify-content-between">
+     <h4>Ajouter un produit suivie </h4>
+     <button class="btn btn-danger" [routerLink]="['../list-suivie']" >
+      <i class="fa fa-arrow-left"></i>
+    </button>
+  </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()">
+
+
+        <div class="mb-3">
+              <label for="numero">Numero suivie</label>
+              <input type="text" minlength="2" class="form-control" id="numero" [(ngModel)]="suivieDto.numero"
+              name="numero"
+              required>
+          </div>
+
+
+          <div class=" mb-3">
+            <label>Date </label>
+            <input
+              type="date"  class="form-control"
+              placeholder="JJ/MM/AAAA"
+              [(ngModel)]="suivieDto.date"
+              name="date"
+              required
+              #createdAtVar="ngModel"
+              [ngClass]="{'is-invalid': createdAtVar.touched && !createdAtVar.valid}"
+            />
+
+            <div class="invalid-feedback">
+              <span *ngIf="createdAtVar.errors?.['required']">
+                Entrez la date
+              </span>
+            </div>
+            </div>
+
+
+        <div class="mb-3">
+          <label class="form-label">Nom du personel</label>
+          <select class="form-control"  placeholder="nom"  name="personels" id="personels" [(ngModel)]="suivieDto.personelDto.id"
+            required>
+            <option *ngIf="!personels?.length">Aucun personel disponible</option>
+            <option *ngFor="let personel of personels" value=" {{personel.id}} ">  {{personel.prenom}}  {{personel.nom}} </option>
+          </select>
+        </div>
+
+         <div class="mb-3">
+            <label class="form-label">Nom et code du produit</label>
+            <select class="form-control"  placeholder  name="produits" id="produits" [(ngModel)]="suivieDto.produitDto.id"
+              required>
+              <option *ngIf="!produits?.length">Aucun produit disponible</option>
+              <option *ngFor="let produit of produits" value="{{produit.id}}">  {{produit.nom}}  </option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Code de categorie</label>
+            <select class="form-control"   name="categories" id="categories" [(ngModel)]="suivieDto.categorieDto.id"
+              required>
+              <option *ngIf="!categories?.length">Aucun categorie disponible</option>
+              <option *ngFor="let categorie of categories" value="{{categorie.id}}">{{categorie.nomcategorie}}</option>
+            </select>
+          </div>
+<!--
+            <div class=" mb-3">
+              <label>Code du produit</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="code"  [(ngModel)]="suivieDto.code"
+                name="code"
+                required
+                minlength="1"
+                maxlength="30"
+                #codeVar="ngModel"
+                [ngClass]="{'is-invalid': codeVar.touched && !codeVar.valid}"
+              />
+
+              <div class="invalid-feedback">
+                <span *ngIf="codeVar.errors?.['required']">
+                  Entrez le code
+                </span>
+                <span *ngIf="codeVar.errors?.['minlength']">
+                  Minimum 4 caractères
+                </span>
+                <span *ngIf="codeVar.errors?.['maxlength']">
+                  Maximum 30 caractères
+                </span>
+              </div>
+            </div> -->
+
+
+            <label>Etat</label>
+          <select class="form-select mx-2" name="choixEtat" [(ngModel)]="suivieDto.etat">
+            <option selected>choisir</option>
+            <option value="Bon">Bon</option>
+            <option value="passable">Passable</option>
+            <option value="mauvais">Mauvais</option>
+            <option value="reparer">Doit etre reparer</option>
+          </select>
+
+
+          <label>Type de suivie</label>
+          <select class="form-select mx-2" name="choixType" [(ngModel)]="suivieDto.typeSuivie">
+            <option selected>choissir</option>
+            <option value="entre">Entre</option>
+            <option value="sortie">Sortie</option>
+            <option value="existant">Existant</option>
+          </select>
+
+
+        <div class="d-flex justify-content-end mt-2">
+          <button class="btn btn-info" type="submit">Sauvegarder</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+

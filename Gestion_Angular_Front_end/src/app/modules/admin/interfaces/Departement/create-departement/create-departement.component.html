@@ -1,0 +1,92 @@
+<div class="card col-md-4 offset-4">
+  <div class="card-header text-white bg-info d-flex justify-content-between">
+    <h4>Créer un département </h4>
+    <button class="btn btn-danger"  [routerLink]="['../list-departement']" >
+      <i class="fa fa-arrow-left"></i>
+    </button>
+   </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="form-row">
+        <div class="mb-3">
+
+          <label>Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nom du departement"  [(ngModel)]="departementDto.nom"
+            name="nom"
+            required
+            minlength="4"
+            maxlength="30"
+            #nomVar="ngModel"
+            [ngClass]="{'is-invalid': nomVar.touched && !nomVar.valid}"
+          />
+
+          <div class="invalid-feedback">
+            <span *ngIf="nomVar.errors?.['required']">
+              Entrez le nom de votre département
+            </span>
+            <span *ngIf="nomVar.errors?.['minlength']">
+              Minimum 4 caractères
+            </span>
+            <span *ngIf="nomVar.errors?.['maxlength']">
+              Maximum 30 caractères
+            </span>
+          </div>
+        </div>
+
+        <div class=" mb-3">
+          <label>Code</label> <input
+            type="text"
+            class="form-control"
+            placeholder="Code de votre departement"  [(ngModel)]="departementDto.code"
+            name="code"
+            required
+            minlength="4"
+            maxlength="30"
+            #codeVar="ngModel"
+            [ngClass]="{'is-invalid': codeVar.touched && !codeVar.valid}"
+          />
+
+          <div class="invalid-feedback">
+            <span *ngIf="codeVar.errors?.['required']">
+              Entrez le code unique de votre département
+            </span>
+            <span *ngIf="codeVar.errors?.['minlength']">
+              Minimum 4 caractères
+            </span>
+            <span *ngIf="codeVar.errors?.['maxlength']">
+              Maximum 30 caractères
+            </span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label>Date de création</label>
+          <input
+            type="date"  class="form-control"
+            placeholder="JJ/MM/AAAA"
+            [(ngModel)]="departementDto.createdAt"
+            name="createdAt"
+            required
+            #createdAtVar="ngModel"
+            [ngClass]="{'is-invalid': createdAtVar.touched && !createdAtVar.valid}"
+          />
+
+          <div class="invalid-feedback">
+            <span *ngIf="createdAtVar.errors?.['required']">
+              Entrez la date de création du département
+            </span>
+          </div>
+          </div>
+      </div>
+
+      <div class="d-flex justify-content-end mt-2">
+        <button class="btn btn-info" type="submit">Sauvegarder</button>
+      </div>
+
+    </form>
+  </div>
+</div>

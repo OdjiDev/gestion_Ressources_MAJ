@@ -1,0 +1,157 @@
+<div class="card col-md-4 offset-4">
+  <div class="card-header text-white bg-info d-flex justify-content-between">
+        <h4> Créer une fournisseur </h4>
+
+        <button class="btn btn-danger"  [routerLink]="['../list-fournisseur']" >
+          <i class="fa fa-arrow-left"></i>
+        </button>
+       </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3"></div>
+          <label>Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="nom du fournisseur"  [(ngModel)]="fournisseurDto.nom"
+            name="nom"
+            required
+            minlength="4"
+            maxlength="30"
+            #nomVar="ngModel"
+            [ngClass]="{'is-invalid': nomVar.touched && !nomVar.valid}"
+          />
+
+          <div class="invalid-feedback">
+            <span *ngIf="nomVar.errors?.['required']">
+              Entrez  votre non
+            </span>
+            <span *ngIf="nomVar.errors?.['minlength']">
+              Minimum 4 caractères
+            </span>
+            <span *ngIf="nomVar.errors?.['maxlength']">
+              Maximum 30 caractères
+            </span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3"></div>
+            <label>Prenon</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="prenom du fournisseur"  [(ngModel)]="fournisseurDto.prenom"
+              name="prenom"
+              required
+              minlength="3"
+              maxlength="30"
+              #prenomVar="ngModel"
+              [ngClass]="{'is-invalid': prenomVar.touched && !prenomVar.valid}"
+            />
+
+            <div class="invalid-feedback">
+              <span *ngIf="prenomVar.errors?.['required']">
+                Entrez le prenom
+              </span>
+              <span *ngIf="prenomVar.errors?.['minlength']">
+                Minimum 4 caractères
+              </span>
+              <span *ngIf="prenomVar.errors?.['maxlength']">
+                Maximum 30 caractères
+              </span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-4 mb-3"></div>
+              <label>Adresse</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="adresse du fournisseur"  [(ngModel)]="fournisseurDto.adresse"
+                name="adresse"
+                required
+                minlength="4"
+                maxlength="30"
+                #adresseVar="ngModel"
+                [ngClass]="{'is-invalid': adresseVar.touched && !adresseVar.valid}"
+              />
+
+              <div class="invalid-feedback">
+                <span *ngIf="adresseVar.errors?.['required']">
+                  Entrez le adresse
+                </span>
+                <span *ngIf="adresseVar.errors?.['minlength']">
+                  Minimum 4 caractères
+                </span>
+                <span *ngIf="adresseVar.errors?.['maxlength']">
+                  Maximum 30 caractères
+                </span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-4 mb-3"></div>
+                <label>E-mail</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="email du fournisseur"  [(ngModel)]="fournisseurDto.mail"
+                  name="email"
+                  required
+                  minlength="4"
+                  maxlength="30"
+                  #emailVar="ngModel"
+                  [ngClass]="{'is-invalid': emailVar.touched && !emailVar.valid}"
+                />
+
+                <div class="invalid-feedback">
+                  <span *ngIf="emailVar.errors?.['required']">
+                    Entrez le email
+                  </span>
+                  <span *ngIf="emailVar.errors?.['minlength']">
+                    Minimum 4 caractères
+                  </span>
+                  <span *ngIf="emailVar.errors?.['maxlength']">
+                    Maximum 30 caractères
+                  </span>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-4 mb-3"></div>
+                  <label>Numero de telephpone</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="numtel du fournisseur"  [(ngModel)]="fournisseurDto.numtel"
+                    name="numtel"
+                    required
+                    minlength="4"
+                    maxlength="30"
+                    #numtelVar="ngModel"
+                    [ngClass]="{'is-invalid': numtelVar.touched && !numtelVar.valid}"
+                  />
+
+                  <div class="invalid-feedback">
+                    <span *ngIf="numtelVar.errors?.['required']">
+                      Entrez le numtel
+                    </span>
+                    <span *ngIf="numtelVar.errors?.['minlength']">
+                      Minimum 4 caractères
+                    </span>
+                    <span *ngIf="numtelVar.errors?.['maxlength']">
+                      Maximum 30 caractères
+                    </span>
+                  </div>
+                </div>
+
+
+
+      <div class="text-right">
+        <button class="btn btn-info" type="submit">Sauvegarder</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+

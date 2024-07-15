@@ -1,0 +1,118 @@
+<div class="card col-md-4 offset-md-4">
+  <div class="card-header text-white bg-info d-flex justify-content-between">
+   <h4> Ajouter un Contrat</h4>
+    <button class="btn btn-danger"  [routerLink]="['../listcontrat']">
+      <i class="fa fa-arrow-left"></i>
+    </button>
+    </div>
+
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+
+
+      <div class="form-row">
+        <div class=" mb-3"></div>
+          <label>Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="nom de ref"  [(ngModel)]="contratDto.nom"
+            name="nom"
+            required
+            minlength="4"
+            maxlength="30"
+            #nomVar="ngModel"
+            [ngClass]="{'is-invalid': nomVar.touched && !nomVar.valid}"
+          />
+
+          <div class="invalid-feedback">
+            <span *ngIf="nomVar.errors?.['required']">
+              Entrez  votre non de reference du contrat
+            </span>
+            <span *ngIf="nomVar.errors?.['minlength']">
+              Minimum 4 caractères
+            </span>
+            <span *ngIf="nomVar.errors?.['maxlength']">
+              Maximum 30 caractères
+            </span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3"></div>
+            <label>code</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="code du contrat"  [(ngModel)]="contratDto.code"
+              name="code"
+              required
+              minlength="3"
+              maxlength="30"
+              #codeVar="ngModel"
+              [ngClass]="{'is-invalid': codeVar.touched && !codeVar.valid}"
+            />
+
+            <div class="invalid-feedback">
+              <span *ngIf="codeVar.errors?.['required']">
+                Entrez le code
+              </span>
+              <span *ngIf="codeVar.errors?.['minlength']">
+                Minimum 4 caractères
+              </span>
+              <span *ngIf="codeVar.errors?.['maxlength']">
+                Maximum 30 caractères
+              </span>
+            </div>
+          </div>
+
+
+
+              <div class="col-md-4 mb-3">
+                <label>Date de debut</label>
+                <input
+                  type="date"  class="form-control"
+                  placeholder="JJ/MM/AAAA"
+                  [(ngModel)]="contratDto.datedebut"
+                  name="datedebut"
+                  required
+                  #createdAtVar="ngModel"
+                  [ngClass]="{'is-invalid': createdAtVar.touched && !createdAtVar.valid}"
+                />
+
+                <div class="invalid-feedback">
+                  <span *ngIf="createdAtVar.errors?.['required']">
+                    Entrez la date de debut
+                  </span>
+                </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label>Date de debut </label>
+                  <input
+                    type="date"  class="form-control"
+                    placeholder="JJ/MM/AAAA"
+                    [(ngModel)]="contratDto.datedefin"
+                    name="datedefin"
+                    required
+                    #createdAtVar="ngModel"
+                    [ngClass]="{'is-invalid': createdAtVar.touched && !createdAtVar.valid}"
+                  />
+
+                  <div class="invalid-feedback">
+                    <span *ngIf="createdAtVar.errors?.['required']">
+                      Entrez la date de fin
+                    </span>
+                  </div>
+                  </div>
+
+
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-info" type="submit">Sauvegarder</button>
+                  </div>
+
+    </form>
+
+
+  </div>
+
+</div>
+

@@ -1,0 +1,8 @@
+
+.col {
+  margin-right: 10px; /* Adjust the value for desired separation width */
+}
+
+.col:last-child {
+  margin-right: 5; /* Remove margin from the last column */
+}

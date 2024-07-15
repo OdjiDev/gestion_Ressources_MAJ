@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header text-center">
+    <h2>Liste des Signalements</h2>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-md btn-primary" (click)="onCreateSignaler()">
+        <i class="fa fa-plus"></i> Ajouter
+      </button>
+    </div>
+
+  </div>
+  <hr class="fw-bold mt-0">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Nom du personel</th>
+          <th>Nom du materiel</th>
+            <th>Etat du materiel</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let signalerDto of signalerDtos">
+          <td>{{ signalerDto.personelDto.nom }}</td>
+          <td>{{ signalerDto.produitDto.nom }}</td>
+          <td>{{ signalerDto.etat }}</td>
+
+
+          <td class="text-center">
+            <button class="btn btn-sm m-1 btn-info" (click)="signalerDetails(signalerDto.id)">
+              <i class="fa fa-clipboard"></i>
+            </button>
+            <button class="btn btn-sm m-1 btn-warning" (click)="updateSignaler(signalerDto.id)">
+              <i class="fa fa-edit"></i>
+            </button>
+
+            <button class="btn btn-sm m-1 btn-danger" (click)="deleteSignaler(signalerDto.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

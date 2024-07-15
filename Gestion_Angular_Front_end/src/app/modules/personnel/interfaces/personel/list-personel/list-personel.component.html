@@ -1,0 +1,49 @@
+<div class="">
+  <div class="row mt-0">
+    <div class="col-md-10">
+<h2> La liste des Personels </h2>
+</div>
+<div class="col-md-2">
+  <button class="btn btn-md btn-primary" (click)="onCreatePersonel()">
+    <i class="fa fa-plus"></i> Ajouter
+  </button>
+</div>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Nom </th>
+            <th> Prenom </th>
+            <th> Sexe</th>
+            <th>Role </th>
+            <th> E-mail </th>
+            <th> Telephone </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor = "let personelDto of personelDtos" >
+            <td> {{ personelDto.nom }} </td>
+            <td> {{ personelDto.prenom}} </td>
+            <td> {{ personelDto.sexe}} </td>
+            <td> {{ personelDto.email}} </td>
+            <td> {{ personelDto.numero }} </td>
+            <td> {{ personelDto.roleDto}} </td>
+
+
+            <td class="text-center">
+              <button class="btn btn-sm m-1 btn-info" (click)="deletePersonel(personelDto.id)">
+                <i class="fa fa-clipboard"></i>
+              </button>
+              <button class="btn btn-sm m-1 btn-warning" (click)="updatePersonel(personelDto.id)">
+                <i class="fa fa-edit"></i>
+              </button>
+
+              <button class="btn btn-sm m-1 btn-danger" (click)="deletePersonel(personelDto.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+    </tbody>
+</table>
+

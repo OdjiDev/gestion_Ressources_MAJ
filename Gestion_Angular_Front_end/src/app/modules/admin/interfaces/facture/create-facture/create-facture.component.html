@@ -1,0 +1,151 @@
+<!-- formulaire -->
+<form [formGroup]="formFacture" (ngSubmit)="submitForm()">
+    <div class="row">
+        <h5 class="card-header text-center p-2 bg-light">Formulaire de creation de facture</h5>
+        <div class="form-group col-3">
+            <label for="numero">Numero facture</label>
+            <input type="text" minlength="2" class="form-control" id="numero" [(ngModel)]="factureDto.numero"
+                formControlName="numero">
+            <app-field-error-display [displayError]="isFieldFactureValid('numero')"
+                errorMsg="Veuillez renseigner la numero du produit">
+            </app-field-error-display>
+        </div>
+        <div class="form-group col-3">
+            <label for="fournisseur">Selectionner fournisseur</label>
+            <select [(ngModel)]="fournisseurDto.id" id="fournisseur" class="form-control" formControlName="fournisseurDto">
+                <option value="" selected>Selectionnez un fournisseur</option>
+                <option *ngFor="let fournisseur of fournisseurDtos" [value]="fournisseur.id">{{ fournisseur.nom }}</option>
+            </select>
+            <app-field-error-display [displayError]="isFieldFactureValid('fournisseurDto')"
+                errorMsg="Veuillez renseigner le fournisseur du produit">
+            </app-field-error-display>
+        </div>
+        <!-- <div class="form-group col-3">
+            <label for="datecommande">Date de la facture</label>
+            <input type="date" class="form-control" id="datecommande" [(ngModel)]="factureDto.datecommande"
+                formControlName="datecommande">
+            <app-field-error-display [displayError]="isFieldFactureValid('datecommande')"
+                errorMsg="Veuillez renseigner la datecommande du produit">
+            </app-field-error-display>
+        </div> -->
+        <div class="col-6 d-flex justify-content-center align-items-centers" *ngIf="ligneFactureDtos.length>0">
+            <div class=" col-6">
+                <h4 class="text-center text-success">
+                    <!-- delimiteur de millier -->
+                    Total: {{(montant==0)?'':(montant).toLocaleString('fr-FR')}} FCFA
+                </h4>
+            </div>
+            <button class="btn btn-warning col-6" [disabled]="!formFacture.valid">
+                <i class="fa fa-save">
+                    Enregistrer la facture
+                </i>
+            </button>
+        </div>
+    </div>
+</form>
+<!-- formulaire -->
+<form [formGroup]="formLigneFacture" (ngSubmit)="ajouterLigneFacture()">
+    <div class="row mt-2">
+        <div class="col-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Libelle</th>
+                        <th>Qte</th>
+                        <th>Prix Unitaire</th>
+                        <th>Montant</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ligne of ligneFactureDtos; let i = index">
+                        <td class="text-center">{{ i+1 }}</td>
+                        <td>{{ ligne.produitDto.designation }}</td>
+                        <td class="text-center">{{ ligne.quantite }}</td>
+                        <td class="text-center">{{ ligne.produitDto.prixAchat }}</td>
+                        <td class="text-center">{{ ligne.produitDto.prixAchat*ligne.quantite }}</td>
+                        <td class="text-center">
+                            <a class="btn" (click)="modifyLigneFacture(ligne)">
+                                <i class="fa fa-edit  text-secondary"></i>
+                            </a>
+                            <a class="btn" (click)="deleteLigneFacture(ligne)">
+                                <i class="fa fa-trash  text-danger"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4">
+            <!-- Affichage du produit selectionner -->
+            <h5 class="card-header text-center p-2">Produit selectionner</h5>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Libelle :
+                    <span class="">{{ ligneFactureDto.produitDto.designation }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Prix unitaire :
+                    <span class="">{{
+                        (ligneFactureDto.produitDto.prixAchat==0)?'':(ligneFactureDto.produitDto.prixAchat) }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Quantite en stock :
+                    <span class="">{{
+                        (ligneFactureDto.produitDto.quantite==0)?'':(ligneFactureDto.produitDto.quantite)
+                        }}</span>
+                </li>
+            </ul>
+            <div class="form-group">
+                <label for="quantite">Quantite</label>
+                <input type="number" min="1" class="form-control" id="quantite" [(ngModel)]="ligneFactureDto.quantite"
+                    formControlName="quantite">
+                <app-field-error-display [displayError]="isFieldLigneFactureValid('quantite')"
+                    errorMsg="Veuillez renseigner la quantite du produit">
+                </app-field-error-display>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+                <button type="submit" class="btn btn-primary col-4 mx-auto" [disabled]="!formLigneFacture.valid">
+                    <i class="fa fa-plus"></i>
+                    Ajouter
+                </button>
+            </div>
+        </div>
+        <div class="text-center {{style}}" *ngIf="message">{{message}}</div>
+    </div>
+</form>
+<!-- Fin du formulaire -->
+<hr>
+<div class="mt-2">
+    <!-- Tableau -->
+    <table class="table mt-2 except" #content>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Libelle</th>
+                <th>Description</th>
+                <th>Qte</th>
+                <th>P.Vente</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Utilisez une boucle *ngFor pour afficher chaque énseignant -->
+            <tr *ngFor="let produit of produitDtos; let i = index">
+                <td class="text-center">{{ i+1 }}</td>
+                <td>{{ produit.codeproduit }}</td>
+                <td>{{ produit.designation }}</td>
+                <td class="text-center">{{ produit.quantite }}</td>
+                <td class="text-center">{{ produit.prixAchat }}</td>
+                <!-- ... Affichez d'autres données de l'énseignant ... -->
+                <td class="text-center">
+                    <!-- Bouton Dropdown avec actions -->
+                    <a class="btn" (click)="selectedProduit(produit)">
+                        <i class="fa fa-check-circle text-dark"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
