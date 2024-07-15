@@ -1,0 +1,6 @@
+.mise-a-jour-component {
+  background-image: url('src\assets\Maj.jpg'); /* Replace 'bureau.jpg' with your actual image filename */
+  background-size: cover; /* Adjust 'cover' as needed for your image */
+  background-position: center; /* Adjust 'center' as needed for your image */
+  min-height: 100vh; /* Set a minimum height for the component to ensure the image covers the entire area */
+}

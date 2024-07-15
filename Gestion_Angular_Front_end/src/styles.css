@@ -1,0 +1,183 @@
+
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+*/
+
+body{
+  background-color: #9badad !important;
+}
+
+  .background-grey{
+    background-color:  #d3dbdb !important;
+  }
+
+  .border-none{
+    border:none !important ;
+  }
+
+  .min-height-80{
+    min-height: 80px;
+
+  }
+
+
+/* You can add global styles to this file, and also import other style files */
+.card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  /* width: 100%; */
+}
+
+.card-1 {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  width: 50%;
+}
+
+.card-header {
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  /* border: black solid 1px; */
+}
+.table td, th, tr{
+  border: black solid 1px;
+}
+table td:first-child,
+table th:first-child {
+  text-align: center;
+}
+
+table td:last-child,
+table th:last-child, thead, tfoot {
+  text-align: center;
+}
+.table td:last-child button {
+  font-size: 12px;
+}
+.table th{
+  background-color: rgb(0, 0, 0, 0.7);
+  color: white;
+}
+
+.table .btn{
+  /* size: 12px; */
+  font-size: small;
+}
+/* Je veux que mes tableaux aient une vue plus classe*/
+/* Change un peu la bordure et la couleur des entete et footer */
+
+table{
+  border-collapse: collapse;
+  border: black solid 1px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  background-color: white;
+  color: black;
+}
+.table > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-color-type: var(--bs-table-striped-color);
+  --bs-table-bg-type: var(--bs-table-striped-bg);
+}
+
+.table > tbody > tr:hover > * {
+background: #686363;
+color: #dae5f5;
+}
+/* met une bordure bottom double avec une classe */
+thead{
+  border-bottom: black solid 3px;
+}
+hr{
+  /* border: black solid 1px; */
+  border: black solid 2px;
+}
+input {
+  focus{
+  outline: #0f1011 solid 2px;
+}
+}
+/* Utilisation d'une image en tant qu'arriere plan */
+/* body {
+  background-image: url('https://media.istockphoto.com/id/1387660986/photo/interior-of-a-traditional-style-school-classroom.jpg?s=1024x1024&w=is&k=20&c=MzU_c7xC9Ny08wiyH7FfshEeo9DTKeAiVa6hCDrQDJY=');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+.card{
+  background-color: transparent;
+}
+ */
+ body{
+  /* padding: 20px; */
+}
+ .sidebar {
+   width: 200px;
+   height: 100vh;
+   /* margin: 20px; */
+   background-color: #f1f1f1;
+   position: fixed;
+   left: -200px;
+   transition: left 0.3s ease;
+ }
+
+ .sidebar.active {
+   left: 0px;
+ }
+ .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  background-color: #333;
+  padding-top: 10px;
+  overflow-y: auto;
+}
+
+.sidebar ul.components {
+  padding: 0;
+}
+
+.sidebar ul li {
+  position: relative;
+}
+
+.sidebar ul li a {
+  color: white;
+  padding: 5px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background-color: #685e5e;
+}
+
+.sidebar ul li ul li {
+  position: relative;
+  left: 10px;
+}
+
+.sidebar ul li ul {
+  display: none;
+}
+
+.sidebar ul li:hover > ul {
+  display: block;
+}

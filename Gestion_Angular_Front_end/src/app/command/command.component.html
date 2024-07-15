@@ -1,0 +1,5 @@
+<input type="text" [(ngModel)]="command" />
+<button (click)="executeCommand()">Exécuter</button>
+<div [hidden]="!output">
+  <pre>{{ output }}</pre>
+</div>

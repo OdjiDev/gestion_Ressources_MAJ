@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ngx-progressbar": "^11.1.0"
+  }
+}

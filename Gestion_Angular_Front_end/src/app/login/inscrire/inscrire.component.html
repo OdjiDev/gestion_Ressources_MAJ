@@ -1,0 +1,48 @@
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p class="text-white-50 mb-5">Donnez vos information pour l'inscription!</p>
+
+           <form (ngSubmit)="usersregister()">
+              <div data-mdb-input-init class="form-outline form-white mb-4">
+                <label class="form-label" for="userId">Username ou Email</label>
+                <input type="email" [(ngModel)]="usersDto.userIdDto" id="userId" name="userId" class="form-control form-control-lg" />
+              </div>
+
+              <div data-mdb-input-init class="form-outline form-white mb-4">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" suggested= "current-password" [(ngModel)]="usersDto.passwordDto" id="password" name="password"class="form-control form-control-lg"  />
+              </div>
+              <div data-mdb-input-init class="form-outline form-white mb-4">
+                <label class="form-label" for="password">repeat Password</label>
+                <input type="password" suggested= "current-password" [(ngModel)]="usersDto.repeatpasswordDto" id="password" name="password"class="form-control form-control-lg"  />
+              </div>
+                           <!-- <div class="col-md-4 mb-3">
+                                    <label class="form-label"> Role</label>
+                                    <select class="form-control" name="roles" id="roles" [(ngModel)] = "usersDto.roleDto.id">
+                                      <option *ngFor="let role of roles" value="{{role.id}}">{{role.nom}}</option>
+                                    </select>
+                                </div> -->
+
+              <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
+
+              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">register</button>
+          </form>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+
+<div class="mise-a-jour-component">
+
+<div class="card col-md-3 offset-4 ">
+
+  <div class="card-header text-white bg-info d-flex justify-content-between">
+<div class="card">
+  <div class="card-header text-white bg-info">
+    Bienvenue dans la gestion de la mise donc attention
+    
+  </div>
+
+ <div class="card-body">
+    <!-- <form novalidate (ngSubmit)="saveData(registerForm)" #registerForm-->
+      <form (ngSubmit) = "onSubmit()">
+
+         <div class="form-row">
+
+            <div *ngIf="miseajourDto.result">
+              <h2>Mise a jour disponible</h2>
+              <app-progress-bar></app-progress-bar>
+            </div>
+            <div *ngIf="!miseajourDto.result">
+              <h2>Vous ete deja a jour.</h2>
+            </div>
+
+
+<div class="text-right">
+  <button class="btn btn-info" type="submit">Mise a jour!</button>
+</div>
+
+</div>
+
+      </form>
+ </div>
+</div>
+  </div>
+
+
+</div>
