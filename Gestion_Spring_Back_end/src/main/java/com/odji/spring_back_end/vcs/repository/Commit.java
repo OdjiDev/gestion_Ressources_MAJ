@@ -12,22 +12,31 @@ package com.odji.spring_back_end.vcs.repository;
         import java.io.Serializable;
         import java.util.List;
 @Data
-@Builder
+
 @Entity
 @Table(name = "commit")
 //@AllArgsConstructor
 @NoArgsConstructor
 public class Commit implements Serializable {
-    private String id;
+    private Long id;
     private String message;
     private List<String> files;
     private Commit parent;
 
     public Commit(String id, String message, List<String> files, Commit parent) {
-        this.id = id;
+
         this.message = message;
         this.files = files;
         this.parent = parent;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Id
+    public Long getId() {
+        return id;
     }
 
 

@@ -58,6 +58,7 @@
       <tr>
         <th>#</th>
         <th>code</th>
+        <th>id-produit</th>
         <th>Nom categorie</th>
         <th>Nom produit</th>
         <th>Prix d'achat</th>
@@ -70,6 +71,7 @@
       <!-- Utilisez une boucle *ngFor pour afficher chaque étudiant -->
       <tr *ngFor="let produit of filteredProduits, let i=index">
         <td>{{ i+1 }}</td>
+        <td>{{ produit.id}}</td>
         <td>{{ produit.codeproduit}}</td>
         <td>{{ produit.categorieDto.nomcategorie}}</td>
         <td>{{ produit.nom }}</td>
