@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Chemins des dossiers
-LOCAL_DIR="/home/versioning/developpeur"
-SERVER_DIR="/home/versioning/gestion_suivie_p"
-
+SERVER_DIR="/Z:/logiciel_Maj/local"
+LOCAL_DIR="/home/versioning/gestion_suivie_p"
+#une inversion de non a ete fais pour ne pas tout changer<<<local=serveur et inverse>>><
 # Vérifier si les dossiers existent
 if [ ! -d "$LOCAL_DIR" ]; then
     echo "Erreur : Le dossier local $LOCAL_DIR n'existe pas."
