@@ -62,10 +62,11 @@ public class Produit {
     private List<LigneDemande> lignedemande;
 
     @OneToMany(mappedBy = "produit")
-    private List<Affectation> affectation;
+    private List<Suivie> suivie;
+
 
     @OneToMany(mappedBy = "produit")
-    private List<Suivie> suivie;
+    private List<Affectation> affectation;
 
 
 

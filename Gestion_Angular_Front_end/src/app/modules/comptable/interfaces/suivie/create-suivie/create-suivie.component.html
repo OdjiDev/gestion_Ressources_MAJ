@@ -47,6 +47,15 @@
           </select>
         </div>
 
+        <div class="mb-3">
+          <label class="form-label">Nom et code du bureau</label>
+          <select class="form-control"  placeholder  name="bureaus" id="bureaus" [(ngModel)]="suivieDto.bureauDto.id"
+            required>
+            <option *ngIf="!bureaus?.length">Aucun bureau disponible</option>
+            <option *ngFor="let bureau of bureaus" value="{{bureau.id}}">  {{bureau.nom}}  </option>
+          </select>
+        </div>
+
          <div class="mb-3">
             <label class="form-label">Nom et code du produit</label>
             <select class="form-control"  placeholder  name="produits" id="produits" [(ngModel)]="suivieDto.produitDto.id"

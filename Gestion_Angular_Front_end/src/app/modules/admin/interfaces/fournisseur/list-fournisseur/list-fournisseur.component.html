@@ -70,7 +70,6 @@
       <!-- Utilisez une boucle *ngFor pour afficher chaque étudiant -->
       <tr *ngFor="let fournisseur of filteredFournisseurs, let i=index">
         <td>{{ i+1 }}</td>
-        <td>{{ fournisseur.id }}</td>
         <td>{{ fournisseur.prenom }}</td>
         <td>{{ fournisseur.nom}}</td>
         <td>{{ fournisseur.adresse }}</td>

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoleDto } from 'src/app/classes/role-dto';
-import { UsersDto } from 'src/app/classes/users-dto';
+import { User } from 'src/app/classes/user';
+
+
 import { RoleService } from 'src/app/services/role.service';
-import { UsersService } from 'src/app/services/users.service';
+import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-inscrire',
@@ -14,29 +17,29 @@ export class InscrireComponent implements OnInit {
 
 roles: RoleDto[]=[];
 
-usersDto: UsersDto = new UsersDto();
-    constructor(private usersService:UsersService,private roleService:RoleService,
+user: User= new User();
+    constructor(private userService:UserService,private roleService:RoleService,
       private router: Router) { }
 
     ngOnInit(): void {
       this.getRoles();
     }
 
-    saveUsers(){
-      this.usersService.addUsers(this.usersDto).subscribe( data =>{
-        this.goTousersLogin();
+    saveUser(){
+      this.userService.addUser(this.user).subscribe( data =>{
+        this.goTouserLogin();
       },
       error => console.log(error));
     }
 
-    goTousersLogin(){
+    goTouserLogin(){
       this.router.navigate(['login']);
     }
 
     onSubmit(){
-      console.log(this.usersDto);
-      this.saveUsers();
-      
+      console.log(this.user);
+      this.saveUser();
+
     }
     getRoles() {
       this.roleService.getRoles()
@@ -46,10 +49,10 @@ usersDto: UsersDto = new UsersDto();
         });
     }
 
-    usersregister() {
-      if(this.usersDto.passwordDto=this.usersDto.repeatpasswordDto)
+    userregister() {
+      if(this.user.password=this.user.repeatPassord)
         {
-          this.saveUsers();
+          this.saveUser();
         }
         else{
           alert("mot de passe differnt");

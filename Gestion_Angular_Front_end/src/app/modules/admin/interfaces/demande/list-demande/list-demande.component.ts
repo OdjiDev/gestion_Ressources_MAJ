@@ -87,7 +87,9 @@ itemsPerPageChanged() {
 filterByChanged() {
   if (this.filterBy == 'motif') {
     this.datas.sort((a, b) => a.motif.localeCompare(b.motif));
-    this.datas.sort((a, b) => a.personelDto.nom.localeCompare(b.personelDto.nom));
+    }
+    if (this.filterBy == 'bureau') {
+         this.datas.sort((a, b) => a.bureauDto.nom.localeCompare(b.bureauDto.nom));
 
   }
 
@@ -101,8 +103,8 @@ async filterDemandeLists() {
   try {
     if (this.searchText) {
       this.datas = await this.demandeDtos.filter(demande => {
-        return  demande.motif.toLowerCase().includes(this.searchText.toLowerCase());
-        // || demande.produitDto.codeproduit.toLowerCase().includes(this.searchText.toLowerCase());
+        return  demande.motif.toLowerCase().includes(this.searchText.toLowerCase())
+         || demande.bureauDto.nom.toLowerCase().includes(this.searchText.toLowerCase());
       });
     } else {
       this.datas = this.demandeDtos;

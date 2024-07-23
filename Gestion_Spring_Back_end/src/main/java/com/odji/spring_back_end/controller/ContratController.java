@@ -38,8 +38,10 @@ public class ContratController {
             return ResponseEntity.ok(contratService.contratToDto(savedContrat));
         }
 
+
+
         //get contrat by id
-        @GetMapping("contrats/{id}")
+        @GetMapping("/contrats/{id}")
         public ResponseEntity<Contrat> getContratById(@PathVariable Integer id) {
             Optional<Contrat> optionalContrat = contratRepository.findById(id);
 
@@ -52,7 +54,7 @@ public class ContratController {
 
         //
         // Update a category
-        @PutMapping("contrats/{id}")
+        @PutMapping("/contrats/{id}")
         public ResponseEntity<ContratDto> updateContrat(@PathVariable Integer id, @RequestBody ContratDto contratDetailsDto) {
             contratRepository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("Contrat not found with id: " + id));
@@ -65,7 +67,7 @@ public class ContratController {
         }
 
         // build delete inscription REST API
-        @DeleteMapping("contrats/{id}")
+        @DeleteMapping("/contrats/{id}")
         public ResponseEntity<HttpStatus> deleteContrat(@PathVariable Integer id) {
 
             Contrat contrat = contratRepository.findById(id)

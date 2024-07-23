@@ -88,7 +88,7 @@ import java.util.Optional;
 
 
     // build delete demande REST API
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteProduit(@PathVariable Integer id){
         Produit produit = produitRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Produit not exist with id: " + id));

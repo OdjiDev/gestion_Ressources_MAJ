@@ -69,7 +69,10 @@ async getAllAffectationDtos() {
   await this.affectationService.getAffectations().subscribe(
     (data: AffectationDto[]) => {
       this.affectationDtos = data;
+      console.log("Toutes les affcetations via data: ",data);
+      console.log("Toutes les affcetations: ",this.affectationDtos);
       this.datas = data;
+      console.log("Toutes les affcetations via datas: ",this.datas);
       this.totalItems = data.length;
       this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
       this.filteredData();
@@ -85,9 +88,11 @@ itemsPerPageChanged() {
 // Ordonner les données en fonction du motif du champ
 // tri par ordre alphabétique suit le motif de la colonne
 filterByChanged() {
-  if (this.filterBy == 'motif') {
-    this.datas.sort((a, b) => a.motif.localeCompare(b.motif));
-    this.datas.sort((a, b) => a.produitDto.codeproduit.localeCompare(b.produitDto.codeproduit));
+  if (this.filterBy == 'nombureau') {
+    this.datas.sort((a, b) => a.bureauDto.nom.localeCompare(b.bureauDto.nom));
+  }
+    if (this.filterBy == 'prenom'){
+    this.datas.sort((a, b) => a.personelDto.prenom.localeCompare(b.personelDto.prenom));
 
   }
 
@@ -101,8 +106,8 @@ async filterAffectationLists() {
   try {
     if (this.searchText) {
       this.datas = await this.affectationDtos.filter(affectation => {
-        return  affectation.motif.toLowerCase().includes(this.searchText.toLowerCase());
-        // || affectation.produitDto.codeproduit.toLowerCase().includes(this.searchText.toLowerCase());
+        return  affectation.bureauDto.nom.toLowerCase().includes(this.searchText.toLowerCase())
+         || affectation.personelDto.prenom.toLowerCase().includes(this.searchText.toLowerCase());
       });
     } else {
       this.datas = this.affectationDtos;

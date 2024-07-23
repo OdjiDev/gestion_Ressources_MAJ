@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -31,7 +32,7 @@ public class Affectation {
 
     @ManyToOne
     @JoinColumn(name = "idproduit")
-    private Produit produit ;
+    private Produit produit;
 
     @ManyToOne
     @JoinColumn(name = "idpersonel")

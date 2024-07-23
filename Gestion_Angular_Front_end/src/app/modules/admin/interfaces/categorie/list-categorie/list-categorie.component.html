@@ -58,7 +58,7 @@
       <tr>
         <th>#</th>
         <th>Code</th>
-        <th>Nom</th>
+        <th>Libele</th>
         <th>Designation</th>
 
         <!-- ... Ajoutez d'autres colonnes ici ... -->
@@ -69,7 +69,6 @@
       <!-- Utilisez une boucle *ngFor pour afficher chaque étudiant -->
       <tr *ngFor="let categorie of filteredCategories, let i=index">
         <td>{{ i+1 }}</td>
-        <td>{{ categorie.id }}</td>
         <td>{{ categorie.code }}</td>
         <td>{{ categorie.nomcategorie}}</td>
         <td>{{ categorie.designation }}</td>

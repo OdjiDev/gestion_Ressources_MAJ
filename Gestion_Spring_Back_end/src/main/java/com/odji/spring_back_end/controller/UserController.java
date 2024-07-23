@@ -1,7 +1,5 @@
 package com.odji.spring_back_end.controller;
 
-import com.odji.spring_back_end.dto.UserDto;
-import com.odji.spring_back_end.model.Categorie;
 import com.odji.spring_back_end.model.User;
 import com.odji.spring_back_end.repository.UserRepository;
 import com.odji.spring_back_end.services.UserService;
@@ -10,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,6 +22,13 @@ public class UserController {
     private UserService userService;
 
 
+
+    @GetMapping("login/list")
+    public List<User> getAllUsers() {
+        List<User> users = userRepository.findAll(); // Assuming you have a JPA repository named 'produitRepository'
+        return users; // Convert products to DTOs
+    }
+
     @PostMapping ("/login")
     public ResponseEntity<?> loginUser(@RequestBody User usersData){
         System.out.println(usersData);
@@ -32,13 +38,13 @@ public class UserController {
             return ResponseEntity.ok(users);}
         return (ResponseEntity<?>)ResponseEntity.internalServerError();
     }
-    // create USERS
-//    @PostMapping("users")
-//    public ResponseEntity<UsersDto> createUsers(@RequestBody UsersDto usersDto) {
-//        Users users = usersService.dtoToUsers(usersDto);
-//        Users savedUsers = usersRepository.save(users);
-//        return ResponseEntity.ok(usersService.usersToDto(savedUsers));
-//    }
+     //create USERS
+    @PostMapping("users")
+    public ResponseEntity<User> createUsers(@RequestBody User user) {
+        User users = user;
+        User savedUsers = userRepository.save(users);
+        return ResponseEntity.ok((savedUsers));
+    }
 
 }
     // create USERS

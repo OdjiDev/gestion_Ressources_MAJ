@@ -29,7 +29,7 @@ societeDto: SocieteDto = new SocieteDto();
     }
 
     goTosocieteList(){
-      this.router.navigate(['admin/listsociete']);
+      this.router.navigate(['admin/list-societe']);
     }
 
     onSubmit(){

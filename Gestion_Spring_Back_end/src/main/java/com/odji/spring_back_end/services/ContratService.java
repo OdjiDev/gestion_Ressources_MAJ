@@ -31,6 +31,7 @@ public class ContratService {
             ContratDto contratDto = new ContratDto();
             contratDto.setId(contrat.getId());
             contratDto.setCode(contrat.getCode());
+            contratDto.setNom(contratDto.getNom());
             contratDto.setDatedefin(contrat.getDatedefin());
             contratDto.setDatedebut(contrat.getDatedebut());
             contratDto.setSocieteDto(societeService.societeToDto(contrat.getSociete()));
@@ -46,6 +47,7 @@ public class ContratService {
             Contrat contrat = new Contrat();
             contrat.setId(contratDto.getId());
             contrat.setCode(contratDto.getCode());
+            contrat.setNom(contratDto.getNom());
             contrat.setDatedebut(contratDto.getDatedebut());
             contrat.setDatedefin(contratDto.getDatedefin());
             contrat.setSociete(societeService.dtoToSociete(contratDto.getSocieteDto()));

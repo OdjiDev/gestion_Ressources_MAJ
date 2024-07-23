@@ -29,4 +29,8 @@ public class Demande {
     @JoinColumn(name = "idbureau")
     private  Bureau bureau;
 
+    @ManyToOne
+    @JoinColumn(name = "idpersonel")
+    private  Personel personel;
+
 }

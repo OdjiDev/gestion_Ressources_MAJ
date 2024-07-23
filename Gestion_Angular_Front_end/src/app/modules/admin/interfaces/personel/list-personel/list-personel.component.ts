@@ -148,7 +148,7 @@ export class ListPersonelComponent implements OnInit {
     this.getPages();
   }
   generatePDF() {
-    const pdf = new jsPDF('p', 'pt', 'a4');
+    const pdf = new jsPDF('l', 'pt', 'a4');
     pdf.html(this.pdfTable.nativeElement, {
       callback: (pdf) => {
         pdf.save('personels.pdf');

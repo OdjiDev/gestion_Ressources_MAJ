@@ -1,26 +1,60 @@
 #!/bin/bash
 
-# Chemins absolus des fichiers
-LOCAL_FILE="/home/versioning/developpeur/diff1.txt"
-SERVER_FILE="/home/versioning/gestion_suivie_p/diff.txt"
+# Variables
+LOCAL_DIR="/z/logiciel_MAJ/user3/Gestion_Angular_Front_end/src/app/modules/admin/interfaces/page-produit/list-produit"
 
-# Comparer les fichiers
-diff_output=$(diff $LOCAL_FILE $SERVER_FILE)
+REMOTE_DIR="/home/developpeur/gestion_Ressources_MAJ/Gestion_Angular_Front_end/src/app/modules/admin/interfaces/page-produit/list-produit"
+SERVER="192.168.80.128"
+USERNAME="serveurMaj"
 
-# Vérifier s'il y a des différences
-if [ $? -eq 0 ]; then
-    echo "Les fichiers sont identiques. Aucune action nécessaire."
-else
-    echo "Des différences ont été détectées. Mise à jour du fichier sur le serveur."
+# Fonction pour remplacer le fichier local par le fichier distant
+replace_local_file() {
+    local local_file=$1
+    local temp_local_copy=$2
+    echo "Remplacement du fichier local $local_file par le fichier distant..."
+    mv $temp_local_copy $local_file
+}
+# $compteur=0
+# Fonction pour comparer et remplacer les fichiers
+compare_and_replace() {
+    local local_file=$1
+    local remote_file=$2
+    local temp_local_copy=$3
 
-    # Ajouter les lignes de différence au fichier sur le serveur
-    diff_lines=$(echo "$diff_output" | grep '^<' | sed 's/^< //' | sed '/^\s*$/d')
 
-    if [ -n "$diff_lines" ]; then
-        # Ajouter les lignes de différence à la fin du fichier sur le serveur
-        echo "$diff_lines" | ssh user@server "cat >> $SERVER_FILE"
-        echo "Les lignes de différence ont été ajoutées au fichier sur le serveur."
+    echo "Tentative de téléchargement du fichier distant $remote_file..."
+    scp $USERNAME@$SERVER:$remote_file $temp_local_copy
+    #  compteur=compteur+$1
+    #  echo"$compteur"
+    # Vérification et comparaison des fichiers
+    if [ -f $temp_local_copy ]; then
+        if diff $local_file $temp_local_copy > /dev/null; then
+            echo "Les fichiers sont identiques."
+        else
+            echo "Les fichiers sont différents. Remplacement en cours..."
+            replace_local_file $local_file $temp_local_copy
+        fi
+        # Suppression de la copie temporaire
+        rm $temp_local_copy
     else
-        echo "Aucune ligne de différence à ajouter."
+        echo "Échec du téléchargement du fichier distant."
+        exit 1
     fi
-fi
+}
+
+# Fonction pour parcourir les répertoires et comparer les fichiers
+process_directory() {
+    local local_dir=$1
+    local remote_dir=$2
+
+    for local_file in $(find $local_dir -type f); do
+        relative_path=${local_file#$local_dir/}
+        remote_file="$remote_dir/$relative_path"
+        temp_local_copy="/tmp/$(basename $local_file)"
+
+        compare_and_replace $local_file $remote_file $temp_local_copy
+    done
+}
+
+# Exécution du traitement
+process_directory $LOCAL_DIR $REMOTE_DIR

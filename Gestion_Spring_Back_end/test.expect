@@ -1,0 +1,25 @@
+#!/C/ActiveTcl/bin/expect -f
+# Variables
+set server "ftp.example.com"
+set username "anonymous"
+set password ""  ;# Mot de passe vide pour connexion anonyme
+set remote_dir "/remote/directory"
+
+# Commandes FTP
+spawn ftp $server
+expect "Name"
+send "$username\r"
+expect "Password"
+send "$password\r"
+expect "ftp>"
+send "cd $remote_dir\r"
+expect "ftp>"
+send "ls\r"
+expect "ftp>"
+send "bye\r"
+
+# Afficher un message après la fin des commandes FTP
+puts "Les commandes FTP ont été exécutées avec succès."
+
+# Sortie propre
+exit

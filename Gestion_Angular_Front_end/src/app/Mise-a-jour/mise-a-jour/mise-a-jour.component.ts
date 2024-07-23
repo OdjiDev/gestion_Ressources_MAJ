@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MiseajourService } from './miseajour.service';
 import { MiseajourDto } from './miseajour-dto';
+import { Mise_a_jourService } from '../mise_a_jour.service';
+import { Mise_a_jourDto } from './mise_a_jour-dto';
 
 
 @Component({
@@ -16,35 +18,62 @@ export class MiseAJourComponent implements OnInit {
   miseajourDto: MiseajourDto = new MiseajourDto();
 
 
-  constructor(private miseajourService:MiseajourService,
-    private router: Router) { }
+  mise_a_jours: Mise_a_jourDto[]=[];
+  mise_a_jourDto: Mise_a_jourDto = new Mise_a_jourDto();
 
+
+  // constructor(private miseajourService:MiseajourService,
+  //   private router: Router) { }
+    constructor(private mise_a_jourService:Mise_a_jourService,
+      private router: Router) { }
 
     ngOnInit(): void {
 
       //this.getMiseajours();
-      this.getMiseajoursConsole() ;
+      //this.getMiseajoursConsole() ;
+   //   this.getMise_a_jours();
+      this.getMise_a_joursConsole() ;
 
     }
 
-   getMiseajoursConsole() {
 
-this.miseajourDto.etat='';
-      this.miseajourService.getMiseajours()
+   getMise_a_joursConsole() {
+
+
+    this.mise_a_jourDto.etat='';
+      this.mise_a_jourService.getMise_a_jours()
         .subscribe(data => {
           console.log(data);
-          this.miseajours = data; // Store the data in the 'miseajours' property
-          this.miseajourDto.etat += `Toutes les miseajours: ${JSON.stringify(data)}\n`; // Append the formatted output to the variable
+          this.mise_a_jours = data; // Store the data in the 'miseajours' property
+          this.mise_a_jourDto.etat += `Toutes les miseajours: ${JSON.stringify(data)}\n`; // Append the formatted output to the variable
         });
 
-      return this.miseajourDto.etat; // Return the accumulated output after the subscription completes
+      return this.mise_a_jourDto.etat; // Return the accumulated output after the subscription completes
     }
 
-    // checkWordInString(word: string, string: string) {
-    //   const lowercaseWord = word.toLowerCase();
-    //   const lowercaseString = string.toLowerCase();
-    //   return lowercaseString.includes(lowercaseWord);
-    // }
+
+
+
+
+
+
+
+// this.miseajourDto.etat='';
+//       this.miseajourService.getMiseajours()
+//         .subscribe(data => {
+//           console.log(data);
+//           this.miseajours = data; // Store the data in the 'miseajours' property
+//           this.miseajourDto.etat += `Toutes les miseajours: ${JSON.stringify(data)}\n`; // Append the formatted output to the variable
+//         });
+
+//       return this.miseajourDto.etat; // Return the accumulated output after the subscription completes
+//     }
+
+//     checkWordInString(word: string, string: string) {
+//       const lowercaseWord = word.toLowerCase();
+//       const lowercaseString = string.toLowerCase();
+//       return lowercaseString.includes(lowercaseWord);
+//     }
 
 
 
@@ -60,7 +89,7 @@ this.miseajourDto.etat='';
         // ... (Existing code for calling getMiseajours and handling errors)
 
         if (this.miseajourDto) { // Assuming miseajourDto is checked for validity elsewhere
-          const wordToCheck = "ahead" ||"different";
+          const wordToCheck = "SCP: 0" ||"different";
           const result = this.checkWordInString(wordToCheck, this.miseajourDto.etat);
           this.miseajourDto.result = result; // Update the component's result property
 

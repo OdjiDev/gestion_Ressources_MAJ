@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Users } from '../classes/users';
+import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,38 +12,38 @@ export class LoginuserService {
 
   constructor(private httpClient: HttpClient) {}
 
-  loginUsers(users: Users): Observable<object> {
-    console.log(users);
+  loginUser(user: User): Observable<object> {
+    console.log(user);
 
     // Create headers with Content-Type set to application/json
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    // Send the POST request with the users data and headers
-    return this.httpClient.post<Object>(`${this.baseURL}`, users, { headers });
+    // Send the POST request with the user data and headers
+    return this.httpClient.post<Object>(`${this.baseURL}`, user, { headers });
 
   }
 
 
-  getUserss(): Observable<Users[]>{
-    return this.httpClient.get<Users[]>(`${this.baseURL}/list`);
+  getUser(): Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURL}/list`);
   }
 
-  // getUsersById(id: number): Observable<Users>{
-  //   return this.httpClient.get<Users>(`${this.baseURL}/${id}`);
+  // getUserById(id: number): Observable<User>{
+  //   return this.httpClient.get<User>(`${this.baseURL}/${id}`);
   // }
 
-  addUsers(users: Users): Observable<Object>{
-    return this.httpClient.post<Object>(`${this.baseURL}`, users);
+  addUser(user: User): Observable<Object>{
+    return this.httpClient.post<Object>(`${this.baseURL}`, user);
   }
 
 }
 
 
-//   updateUsers(id: number, users: Users): Observable<Object>{
-//     return this.httpClient.put<Object>(`${this.baseURL}/${id}`, Users);
+//   updateUser(id: number, user: User): Observable<Object>{
+//     return this.httpClient.put<Object>(`${this.baseURL}/${id}`, User);
 //   }
 
-//   deleteUsers(id: number): Observable<Object>{
+//   deleteUser(id: number): Observable<Object>{
 //     return this.httpClient.delete<Object>(`${this.baseURL}/${id}`);
 //   }
 
@@ -57,13 +57,13 @@ export class LoginuserService {
 
 // constructor(private httpClient: HttpClient) {}
 
-// loginUsers(users: Users): Observable<object> {
-//   console.log(users);
+// loginUser(user: User): Observable<object> {
+//   console.log(user);
 
 //   // Create headers with Content-Type set to application/json
 //   const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 //   // Send the POST request with the user data and headers
-//   return this.httpClient.post(`${this.baseUrl}`, users, { headers });
+//   return this.httpClient.post(`${this.baseUrl}`, user, { headers });
 // }
 // }

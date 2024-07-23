@@ -18,7 +18,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class SocieteController {
 
     private  final SocieteService societeService;
@@ -27,7 +27,7 @@ public class SocieteController {
 
 
     // get all societe
-    @GetMapping("/societes/list")
+    @GetMapping("societes/list")
     public List<SocieteDto> getAllSocietes() {
         List<Societe> societes = societeRepository.findAll(); // Assuming you have a JPA repository named 'produitRepository'
         return societeService.societeDtoList(societeRepository.findAll()); // Convert products to DTOs

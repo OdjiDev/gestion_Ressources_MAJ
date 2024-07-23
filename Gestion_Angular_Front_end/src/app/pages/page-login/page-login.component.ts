@@ -3,7 +3,7 @@ import { UsersDto } from 'src/app/classes/users-dto';
 import { Component, OnInit } from '@angular/core';
 import { LoginuserService } from '../../login/loginuser.service';
 import { Router } from '@angular/router';
-import { Users } from '../../classes/users';
+
 
 
 @Component({

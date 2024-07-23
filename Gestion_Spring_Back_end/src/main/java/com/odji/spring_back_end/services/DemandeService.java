@@ -15,6 +15,7 @@ public class DemandeService {
 
     private  final LigneDemandeService ligneDemandeService;
     private final BureauService bureauService;
+    private  final PersonelService personelService;
 
     public List<DemandeDto> demandesDtoList(List<Demande> demandes){
         return demandes.stream()
@@ -34,6 +35,7 @@ public class DemandeService {
         demandeDto.setMotif(demande.getMotif());
         demandeDto.setLignedemandeDto(ligneDemandeService.LigneDemandeToDto(demande.getLignedemande()));
         demandeDto.setBureauDto(bureauService.BureauToDto(demande.getBureau()));
+        demandeDto.setPersonelDto(personelService.personelToDto(demande.getPersonel()));
         return demandeDto;
 
     }
@@ -46,7 +48,7 @@ public class DemandeService {
         demande.setId(demandeDto.getId());
         demande.setMotif(demandeDto.getMotif());
         demande.setLignedemande(ligneDemandeService.dtoToLigneDemande(demandeDto.getLignedemandeDto()));
-
+        demande.setPersonel(personelService.dtoToPersonel(demandeDto.getPersonelDto()));
         return demande;
     }
 }

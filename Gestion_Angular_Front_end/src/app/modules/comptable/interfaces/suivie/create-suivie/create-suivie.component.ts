@@ -1,3 +1,5 @@
+import { BureauService } from './../../../../../services/bureau.service';
+import { BureauDto } from './../../../../../classes/bureau-dto';
 import { CategorieService } from './../../../../../services/categorie.service';
 
 
@@ -24,6 +26,7 @@ throw new Error('Method not implemented.');
 
 categories: CategorieDto[]=[];
 produits: ProduitDto[]=[];
+bureaus:BureauDto[]=[];
 Suivies:SuivieDto[]=[];
 personels:PersonelDto[]=[];
 suivieDto: SuivieDto = new SuivieDto();
@@ -32,7 +35,8 @@ suivieDto: SuivieDto = new SuivieDto();
       private produitService:ProduitService,
       private personelService:PersonelService,
       private SuivieService:SuivieService,
-      private categorieService:CategorieService,
+      private bureauService:BureauService,
+          private categorieService:CategorieService,
       private router: Router) { }
 
     ngOnInit(): void {
@@ -41,6 +45,7 @@ suivieDto: SuivieDto = new SuivieDto();
       this.getPersonels();
       this.getSuivies();
       this.getCategories();
+      this.getBureaus();
     }
 
     saveSuivie(){
@@ -74,6 +79,14 @@ suivieDto: SuivieDto = new SuivieDto();
         .subscribe(data => {
           this.categories = data;
           console.log("Toutes les categories : ", this.categories);
+        });
+    }
+
+    getBureaus() {
+      this.bureauService.getBureaus()
+        .subscribe(data => {
+          this.bureaus = data;
+          console.log("Toutes les bureaus : ", this.bureaus);
         });
     }
     getProduitSansAvarie() {

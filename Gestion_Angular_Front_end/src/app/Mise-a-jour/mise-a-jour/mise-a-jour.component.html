@@ -6,8 +6,8 @@
   <div class="card-header text-white bg-info d-flex justify-content-between">
 <div class="card">
   <div class="card-header text-white bg-info">
-    Bienvenue dans la gestion de la mise donc attention
-    
+    Bienvenue dans la gestion de la mise
+
   </div>
 
  <div class="card-body">
@@ -16,12 +16,12 @@
 
          <div class="form-row">
 
-            <div *ngIf="miseajourDto.result">
+            <div *ngIf="mise_a_jourDto.result">
               <h2>Mise a jour disponible</h2>
               <app-progress-bar></app-progress-bar>
             </div>
-            <div *ngIf="!miseajourDto.result">
-              <h2>Vous ete deja a jour.</h2>
+            <div *ngIf="!mise_a_jourDto.result">
+              <h2>Cliquez pour verifier.</h2>
             </div>
 
 

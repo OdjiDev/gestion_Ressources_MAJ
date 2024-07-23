@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Users } from '../../../classes/users';
+
 import { Router } from '@angular/router';
 import { LoginuserService } from '../../../login/loginuser.service';
+import { User } from 'src/app/classes/user';
 @Component({
   selector: 'app-create-users',
   templateUrl: './create-users.component.html',
@@ -10,9 +11,9 @@ import { LoginuserService } from '../../../login/loginuser.service';
 export class CreateUsersComponent implements OnInit {
 
 
-  users: Users = {
+  user: User = {
     userId: "", password: "",
-    repeatpassord: "",
+    repeatPassord: "",
     user_role: ""
   };
 

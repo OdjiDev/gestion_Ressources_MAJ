@@ -179,7 +179,13 @@ export class CreateFactureComponent {
     this.ligneFactureDto = new LigneFactureDto();
     this.formLigneFactureSubmitAttempt = false;
     this.formLigneFacture.reset();
+
+    this.factureDto.total=this.montant;
+    this.addFacture();
+//this.factureService.addFacture.this.factureDto.total=this.montant;
+
   }
+
   // Modification d'une ligneFacture
   modifyLigneFacture(ligneFacture: LigneFactureDto) {
     // Chercher ligneFacture dans le tableau ligneFactureDtos, l'affecter a ligneFacture et le supprimer du tableau

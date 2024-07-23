@@ -1,7 +1,7 @@
 <div class="card col-md-4 offset-md-4">
   <div class="card-header text-white bg-info d-flex justify-content-between">
    <h4> Ajouter un Contrat</h4>
-    <button class="btn btn-danger"  [routerLink]="['../listcontrat']">
+    <button class="btn btn-danger"  [routerLink]="['../list-contrat']">
       <i class="fa fa-arrow-left"></i>
     </button>
     </div>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="col-md-4 mb-3"></div>
+          <div class=" mb-3"></div>
             <label>code</label>
             <input
               type="text"
@@ -65,9 +65,16 @@
             </div>
           </div>
 
+          <div class="mb-3">
+            <label class="form-label">Societe</label>
+            <select class="form-control" name="societes" id="societes" [(ngModel)]="contratDto.societeDto.id"
+              required>
+              <option *ngIf="!societes?.length">Aucune catégorie disponible</option>
+              <option *ngFor="let societe of societes" value="{{societe.id}}">{{societe.nom}}</option>
+            </select>
+          </div>
 
-
-              <div class="col-md-4 mb-3">
+              <div class="mb-3">
                 <label>Date de debut</label>
                 <input
                   type="date"  class="form-control"
@@ -85,7 +92,7 @@
                   </span>
                 </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class=" mb-3">
                   <label>Date de debut </label>
                   <input
                     type="date"  class="form-control"

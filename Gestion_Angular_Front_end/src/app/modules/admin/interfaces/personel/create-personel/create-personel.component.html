@@ -49,24 +49,13 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="mb-3"></div>
-        <label>Sexe</label>
-        <input type="text" class="form-control" placeholder="sexe du personel" [(ngModel)]="personelDto.sexe"
-          name="sexe" required minlength="1" maxlength="30" #sexeVar="ngModel"
-          [ngClass]="{'is-invalid': sexeVar.touched && !sexeVar.valid}" />
-
-        <div class="invalid-feedback">
-          <span *ngIf="sexeVar.errors?.['required']">
-            Entrez le sexe
-          </span>
-          <span *ngIf="sexeVar.errors?.['minlength']">
-            Minimum 1 caractères
-          </span>
-          <span *ngIf="sexeVar.errors?.['maxlength']">
-            Maximum 30 caractères
-          </span>
+          <label for="role">Sexe </label>
+          <select class="form-control" id="role" [(ngModel)]="personelDto.sexe" name="sexe" class="form-control form-control-lg" >
+            <option value="">Sélectionner</option>
+            <option value="feminin">F</option>
+            <option value="masculin">M</option>
+            </select>
         </div>
-      </div>
       <div class="form-row">
         <div class=" mb-3"></div>
         <label>Date de naissance</label>

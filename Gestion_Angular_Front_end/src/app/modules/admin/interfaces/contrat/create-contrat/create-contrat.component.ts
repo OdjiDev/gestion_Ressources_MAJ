@@ -1,3 +1,5 @@
+import { SocieteService } from 'src/app/services/societe.service';
+import { SocieteDto } from 'src/app/classes/societe-dto';
 import { ContratDto } from './../../../../../classes/contrat-dto';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -13,12 +15,16 @@ import { DepartementService } from 'src/app/services/departement.service';
 export class CreateContratComponent implements OnInit {
 
 departements: DepartementDto[]=[];
+societes: SocieteDto[]=[];
 
 contratDto: ContratDto = new ContratDto();
-    constructor(private contratService:ContratService,private departementService:DepartementService,
+    constructor(private contratService:ContratService,
+      private departementService:DepartementService,
+      private societeService: SocieteService,
       private router: Router) { }
 
     ngOnInit(): void {
+      this.getSocietes();
     }
 
     saveContrat(){
@@ -30,19 +36,20 @@ contratDto: ContratDto = new ContratDto();
     }
 
     goTocontratList(){
-      this.router.navigate(['admin/listcontrat']);
+      this.router.navigate(['admin/list-contrat']);
     }
 
     onSubmit(){
       console.log(this.contratDto);
       this.saveContrat();
     }
-    getDepartemets() {
-      this.departementService.getDepartements()
+
+
+    getSocietes() {
+      this.societeService.getSocietes()
         .subscribe(data => {
-          this.departements = data;
-          console.log("Toutes les departemets: ", this.departements);
+          this.societes = data;
+          console.log("Toutes les departemets: ", this.societes);
         });
     }
-
   }

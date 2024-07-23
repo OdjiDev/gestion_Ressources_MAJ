@@ -27,10 +27,8 @@ public class Personel {
     @Column(name = " dateDeNaissance")
     private String dateDeNaissance;
 
-
     @Column(name = "lieuDeNaissance")
     private String lieuDeNaissance;
-
 
     @Column(name = "sexe")
     private String sexe;
@@ -54,6 +52,11 @@ public class Personel {
 
     @OneToMany(mappedBy = "personel")
     private List<Suivie> suivie;
+
+
+    @OneToMany(mappedBy = "personel")
+    private List<Demande> demande;
+
 
 }
 

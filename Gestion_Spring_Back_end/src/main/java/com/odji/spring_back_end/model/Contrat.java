@@ -24,12 +24,15 @@ public class Contrat {
     @Column(name = "code")
     private String code;
 
+    @Column(name = "nom")
+    private String nom;
+
 
     @Column(name = "datedebut")
-    private Instant datedebut;
+    private String datedebut;
 
     @Column(name = "datedefin")
-    private Instant datedefin;
+    private String datedefin;
 
     @ManyToOne
     @JoinColumn(name = "idsociete")

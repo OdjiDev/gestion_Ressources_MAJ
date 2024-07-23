@@ -40,8 +40,8 @@
       </label>
       <select class="form-select mx-2" name="filterBy" [(ngModel)]="filterBy" (change)="filterByChanged()">
         <option selected>Filtrer par</option>
-        <option value="code">Code</option>
-        <option value="libelle">Libelle</option>
+        <option value="nombureau">Bureau</option>
+        <option value="prenom">prenom</option>
       </select>
     </div>
     <div class="form-group d-flex align-items-center col-3">
@@ -58,7 +58,10 @@
       <tr>
         <th>#</th>
         <th>Code</th>
-        <th>Nom</th>
+        <th>motif</th>
+        <th>produit</th>
+        <th>bureau</th>
+        <th>Nom complet</th>
         <!-- ... Ajoutez d'autres colonnes ici ... -->
         <th>Actions</th>
       </tr>
@@ -69,6 +72,9 @@
         <td>{{ i+1 }}</td>
         <td>{{ affectation.id }}</td>
         <td>{{ affectation.motif }}</td>
+       <td>{{ affectation.produitDto.nom}}</td>
+        <td>{{ affectation.bureauDto.nom }}</td>
+        <td>{{ affectation.personelDto.nom }} {{affectation.personelDto.prenom }}</td>
         <!-- <td>{{ affectation.enseignantDto.motif }} {{affectation.enseignantDto.premotif}}</td> -->
         <!-- ... Affichez d'autres données de la affectation ... -->
         <td>

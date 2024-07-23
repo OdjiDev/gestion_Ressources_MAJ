@@ -100,15 +100,15 @@ const routes: Routes = [
      { path: 'update-avarie',component: UpdateAvarieComponent},
     // { path: 'searchavarie',component: CreateAvarieComponent  },
   //routes des avaries
-  { path: 'addsociete',component: CreateSocieteComponent },
-  { path: 'listsociete',component: ListSocieteComponent  },
-  { path: 'updatesociete',component: UpdateSocieteComponent},
+  { path: 'add-societe',component: CreateSocieteComponent },
+  { path: 'list-societe',component: ListSocieteComponent  },
+  { path: 'update-societe',component: UpdateSocieteComponent},
  // { path: 'searchsociete',component: CreateSocieteComponent  },
    //routes des avaries
-   { path: 'addcontrat',component: CreateContratComponent },
-   { path: 'listcontrat',component: ListContratComponent  },
-   { path: 'updatecontrat',component: UpdateContratComponent},
-  // { path: 'searchcontrat',component: CreateContratComponent  },
+   { path: 'add-contrat',component: CreateContratComponent },
+   { path: 'list-contrat',component: ListContratComponent  },
+   { path: 'update-contrat',component: UpdateContratComponent},
+  // { path: 'search-contrat',component: CreateContratComponent  },
   //routes des personels
   { path: 'add-personel',component: CreatePersonelComponent },
   { path: 'list-personel',component: ListPersonelComponent  },

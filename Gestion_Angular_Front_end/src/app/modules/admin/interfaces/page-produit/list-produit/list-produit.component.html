@@ -57,12 +57,13 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>code</th>
-        <th>id-produit</th>
+       
         <th>Nom categorie</th>
         <th>Nom produit</th>
         <th>Prix d'achat</th>
         <th>Quantite</th>
+      <!--    <th>Taux TTC</th>
+              <th>Taux HT</th>     -->
         <!-- ... Ajoutez d'autres colonnes ici ... -->
         <th>Actions</th>
       </tr>
@@ -71,12 +72,13 @@
       <!-- Utilisez une boucle *ngFor pour afficher chaque étudiant -->
       <tr *ngFor="let produit of filteredProduits, let i=index">
         <td>{{ i+1 }}</td>
-        <td>{{ produit.id}}</td>
-        <td>{{ produit.codeproduit}}</td>
+    
         <td>{{ produit.categorieDto.nomcategorie}}</td>
         <td>{{ produit.nom }}</td>
         <td>{{ produit.prixAchat }}</td>
-        <td>{{ produit.quantite }}</td>
+     	  <td>{{ produit.quantite }}</td>		 	
+        <!--       <td>{{ produit.quantite* produit.prixAchat+0.20* produit.prixAchat }}</td>
+             <td>{{ produit.quantite* produit.prixAchat }}</td>     -->
         <!-- <td>{{ produit.enseignantDto.motif }} {{produit.enseignantDto.premotif}}</td> -->
         <!-- ... Affichez d'autres données de la produit ... -->
         <td>

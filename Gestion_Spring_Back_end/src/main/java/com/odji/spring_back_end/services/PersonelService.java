@@ -28,7 +28,8 @@ public class PersonelService {
         personelDto.setId(personel.getId());
         personelDto.setNom(personel.getNom());
         personelDto.setPrenom(personel.getPrenom());
-        personelDto.setDateDeNaissance(personel.getLieuDeNaissance());
+        personelDto.setDateDeNaissance(personel.getDateDeNaissance());
+        personelDto.setLieuDeNaissance(personel.getLieuDeNaissance());
         personelDto.setNumero(personel.getNumero());
         personelDto.setEmail(personel.getEmail());
         personelDto.setSexe(personel.getSexe());
@@ -44,7 +45,8 @@ public class PersonelService {
         personel.setId(personelDto.getId());
         personel.setNom(personelDto.getNom());
         personel.setPrenom(personelDto.getPrenom());
-        personel.setLieuDeNaissance(personelDto.getDateDeNaissance());
+        personel.setLieuDeNaissance(personelDto.getLieuDeNaissance());
+        personel.setDateDeNaissance(personelDto.getDateDeNaissance());
         personel.setRole(optionService.dtoToOption(personelDto.getRole()));
         personel.setSexe(personelDto.getSexe());
         personel.setEmail(personelDto.getEmail());

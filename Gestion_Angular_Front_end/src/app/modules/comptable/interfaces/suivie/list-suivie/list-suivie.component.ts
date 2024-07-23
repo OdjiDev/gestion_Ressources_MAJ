@@ -55,6 +55,7 @@ deleteSuivie(id: number){
 ngOnInit() {
   this.getAllSuivieDtos();
   this.filteredData();
+
 }
 
 async getAllSuivieDtos() {
@@ -68,6 +69,11 @@ async getAllSuivieDtos() {
     }
   );
 }
+
+
+
+
+
 itemsPerPageChanged() {
   this.currentPage = 1;
   this.filteredData();

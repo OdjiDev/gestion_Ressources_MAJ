@@ -60,7 +60,7 @@
       <tr>
         <th>#</th>
         <th>Nom</th>
-        <th>Quantite</th>
+        <th>Code Produit</th>
         <th>Motif</th>
         <th>Date</th>
         <!-- ... Ajoutez d'autres colonnes ici ... -->
@@ -72,7 +72,7 @@
       <tr *ngFor="let avarie of filteredAvaries, let i=index">
         <td>{{ i+1 }}</td>
         <td>{{ avarie.produitDto.nom }}</td>
-        <td>{{ avarie.quantite}}</td>
+        <td>{{ avarie.produitDto.codeproduit}}</td>
         <td>{{ avarie.motif }}</td>
         <td>{{ avarie.date}}</td>
         <!-- <td>{{ avarie.enseignantDto.motif }} {{avarie.enseignantDto.premotif}}</td> -->

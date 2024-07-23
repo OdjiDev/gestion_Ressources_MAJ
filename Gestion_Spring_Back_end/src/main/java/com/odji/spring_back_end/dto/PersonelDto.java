@@ -2,6 +2,7 @@ package com.odji.spring_back_end.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odji.spring_back_end.model.Affectation;
+import com.odji.spring_back_end.model.Demande;
 import com.odji.spring_back_end.model.Suivie;
 import lombok.*;
 
@@ -28,7 +29,6 @@ public class PersonelDto {
 
     private String numero;
 
-
     private String email;
 
     private String password;
@@ -36,7 +36,12 @@ public class PersonelDto {
     private OptionDto role;
 
     @JsonIgnore
-    private List<Affectation> affectation;
+    private List<Demande> demande;
+
     @JsonIgnore
-    private List<Suivie> suivies;
+    private List<Affectation> affectation;
+
+    @JsonIgnore
+    private List<Suivie> suivie;
+
 }

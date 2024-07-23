@@ -59,7 +59,10 @@
         <th>#</th>
         <th>Code</th>
         <th>Nom</th>
-   
+        <th>Numero fiscal de societe</th>
+        <th>Date de debut</th>
+        <th>Date de fin</th>
+
 
         <!-- ... Ajoutez d'autres colonnes ici ... -->
         <th>Actions</th>
@@ -69,10 +72,11 @@
       <!-- Utilisez une boucle *ngFor pour afficher chaque étudiant -->
       <tr *ngFor="let contrat of filteredContrats, let i=index">
         <td>{{ i+1 }}</td>
-        <td>{{ contrat.id }}</td>
         <td>{{ contrat.code }}</td>
         <td>{{ contrat.nom}}</td>
-
+        <td>{{ contrat.societeDto.numerofiscal}}</td>
+        <td>{{ contrat.datedebut}}</td>
+        <td>{{ contrat.datedefin}}</td>
 
         <!-- <td>{{ contrat.enseignantDto.motif }} {{contrat.enseignantDto.premotif}}</td> -->
         <!-- ... Affichez d'autres données de la contrat ... -->

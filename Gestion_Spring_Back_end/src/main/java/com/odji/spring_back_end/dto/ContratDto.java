@@ -17,9 +17,11 @@ public class ContratDto {
 
     private String code;
 
-    private Instant datedebut;
+    private String nom;
 
-    private Instant datedefin;
+    private String datedebut;
+
+    private String datedefin;
 
     private SocieteDto societeDto;
 }
