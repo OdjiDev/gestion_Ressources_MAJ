@@ -62,6 +62,15 @@ import { CreateReparationComponent } from './interfaces/reparation/create-repara
 import { ListReparationComponent } from './interfaces/reparation/list-reparation/list-reparation.component';
 import { UpdateReparationComponent } from './interfaces/reparation/update-reparation/update-reparation.component';
 import { DetailReparationComponent } from './interfaces/reparation/detail-reparation/detail-reparation.component';
+import { UserComponent } from './interfaces/user/user.component';
+import { CreateUserComponent } from './interfaces/user/create-user/create-user.component';
+import { ListUserComponent } from './interfaces/user/list-user/list-user.component';
+import { DetatilUserComponent } from './interfaces/user/detatil-user/detatil-user.component';
+import { UpdateUserComponent } from './interfaces/user/update-user/update-user.component';
+import { CresteRoleComponent } from './interfaces/user/creste-role/creste-role.component';
+import { ListRoleComponent } from './interfaces/user/list-role/list-role.component';
+import { CreateRoleComponent } from './interfaces/user/create-role/create-role.component';
+import { UpdateRoleComponent } from './interfaces/user/update-role/update-role.component';
 
 @NgModule({
   declarations: [
@@ -128,6 +137,15 @@ import { DetailReparationComponent } from './interfaces/reparation/detail-repara
     ListReparationComponent,
     UpdateReparationComponent,
     DetailReparationComponent,
+    UserComponent,
+    CreateUserComponent,
+    ListUserComponent,
+    DetatilUserComponent,
+    UpdateUserComponent,
+   ListRoleComponent,
+   CreateRoleComponent,
+   UpdateRoleComponent
+
   ],
 
   imports: [CommonModule, AdminRoutingModule, FormsModule, ReactiveFormsModule],

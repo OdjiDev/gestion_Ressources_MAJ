@@ -42,6 +42,12 @@ import { DetailDepartementComponent } from './interfaces/Departement/detail-depa
 import { CreateReparationComponent } from './interfaces/reparation/create-reparation/create-reparation.component';
 import { ListReparationComponent } from './interfaces/reparation/list-reparation/list-reparation.component';
 import { UpdateReparationComponent } from './interfaces/reparation/update-reparation/update-reparation.component';
+import { CreateUserComponent } from './interfaces/user/create-user/create-user.component';
+import { ListUserComponent } from './interfaces/user/list-user/list-user.component';
+import { UpdateUserComponent } from './interfaces/user/update-user/update-user.component';
+import { CreateRoleComponent } from './interfaces/user/create-role/create-role.component';
+import { ListRoleComponent } from './interfaces/user/list-role/list-role.component';
+import { UpdateRoleComponent } from './interfaces/user/update-role/update-role.component';
 
 
 const routes: Routes = [
@@ -127,6 +133,17 @@ const routes: Routes = [
   { path: 'update-reparation/:id',component: UpdateReparationComponent},
  // { path: 'searchreparation',component: CreateReparationComponent  },
 
+
+  //routes des user
+  { path: 'add-user',component: CreateUserComponent },
+  { path: 'list-user',component: ListUserComponent  },
+  { path: 'update-user/:id',component: UpdateUserComponent},
+ // { path: 'searchuser',component: CreateUserComponent  },
+ //routes des role
+ { path: 'add-role',component: CreateRoleComponent },
+ { path: 'list-role',component: ListRoleComponent  },
+ { path: 'update-role/:id',component: UpdateRoleComponent},
+// { path
 
     ],
 

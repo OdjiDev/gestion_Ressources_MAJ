@@ -52,7 +52,7 @@ public class Mise_a_jourController {
         String unixPath = translatePath(scriptPath);
         System.out.println(unixPath);
 
-        String SCRIPT_PATH = "Z:/logiciel_MAJ/MAJ/gestion_suivie_p/Gestion_Spring_Back_end/mise_a_jourw.sh"; // Hardcoded script path
+        //String SCRIPT_PATH = "Z:/logiciel_MAJ/MAJ/gestion_suivie_p/Gestion_Spring_Back_end/mise_a_jourw.sh"; // Hardcoded script path
 
         try {
             // Execute the script using ProcessBuilder with Git Bash

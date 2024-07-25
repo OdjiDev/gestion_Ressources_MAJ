@@ -9,7 +9,7 @@ import { MenuComponent } from './composants/menu/menu.component';
 import { CommandComponent } from './command/command.component';
 import { CreateUsersComponent } from './pages/page-login/create-users/create-users.component';
 import { HomeComponent } from './modules/admin/components/home/home.component';
-import { RegisterComponent } from './register/register.component';
+
 import { LoginComponent } from './login/login.component';
 import { MiseAJourComponent } from './Mise-a-jour/mise-a-jour/mise-a-jour.component';
 import { ProgressBarComponent } from './Mise-a-jour/mise-a-jour/progress-bar/progress-bar.component';
@@ -73,10 +73,7 @@ const routes: Routes = [
      component: ProgressBarComponent
    },
 
-  {
-    path: 'register',
-     component: RegisterComponent
-    },
+  
     {
       path: 'inscrire',
        component: PageInscriptionComponent

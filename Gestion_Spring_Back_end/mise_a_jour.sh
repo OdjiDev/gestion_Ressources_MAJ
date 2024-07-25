@@ -12,12 +12,12 @@ cd Gestion_Angular_Front_end/src/app/modules/admin/interfaces/page-produit/list-
 
 # Assign the current directory to the variable 'path'
 path=$(pwd)
-
+# home=$($home)
 # Variables
 echo "Début du script mise_a_jour.sh\n"
  LOCAL_DIR=$path
 # REMOTE_DIR="/z/logiciel_MAJ/"
-REMOTE_DIR="/home/versioning/depot_logiciel/gestion_suivie_p/Gestion_Angular_Front_end/src/app/modules/admin/interfaces/page-produit/list-produit"
+REMOTE_DIR="/home/versioning/depot_logiciel/gestion_Ressources_MAJ/Gestion_Angular_Front_end/src/app/modules/admin/interfaces/page-produit/list-produit"
 #  REMOTE_DIR="/home/serveurMaj/versioning/gestion_Ressources_MAJ/Gestion_Angular_Front_end/src/app/modules/admin/interfaces/page-produit/list-produit"
 SERVER="192.168.139.141"
 USERNAME="serveurMaj"

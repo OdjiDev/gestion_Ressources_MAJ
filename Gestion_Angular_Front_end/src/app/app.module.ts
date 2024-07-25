@@ -15,7 +15,7 @@ import { MenuComponent } from './composants/menu/menu.component';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { CommandComponent } from './command/command.component';
 import { CreateUsersComponent } from './pages/page-login/create-users/create-users.component';
-import { RegisterComponent } from './register/register.component';
+
 import { LoginComponent } from './login/login.component';
 import { MiseAJourComponent } from './Mise-a-jour/mise-a-jour/mise-a-jour.component';
 import { ProgressBarComponent } from './Mise-a-jour/mise-a-jour/progress-bar/progress-bar.component';
@@ -36,13 +36,13 @@ import { FieldErrorDisplayComponent } from './field-error-display/field-error-di
     MenuComponent,
     CommandComponent,
     CreateUsersComponent,
-    RegisterComponent,
+
     LoginComponent,
     MiseAJourComponent,
     ProgressBarComponent,
     InscrireComponent,
     TestComponent,
-     
+
 
 
 
