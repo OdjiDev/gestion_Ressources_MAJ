@@ -126,4 +126,4 @@ process_directory() {
 # Exécution du traitement
  process_directory $LOCAL_DIR $REMOTE_DIR
 
-echo "fin du script mise_a_jour.sh "
+echo "fin du script mise_a_jour.sh OK "
