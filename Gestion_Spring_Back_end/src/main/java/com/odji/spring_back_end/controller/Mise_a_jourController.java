@@ -52,14 +52,13 @@ public class Mise_a_jourController {
         String unixPath = translatePath(scriptPath);
         System.out.println(unixPath);
 
-        //String SCRIPT_PATH = "Z:/logiciel_MAJ/MAJ/gestion_suivie_p/Gestion_Spring_Back_end/mise_a_jour.sh"; // Hardcoded script path
 
         try {
             // Execute the script using ProcessBuilder with Git Bash
            //List<String> command = List.of("cmd", "/c", "Z:\\logiciel_MAJ\\Git\\bin\\bash.exe", "-c",SCRIPT_PATH);
-           //List<String> command = List.of("cmd", "/c", "bash", "-c", unixPath);
-            ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", unixPath);
-           // ProcessBuilder processBuilder = new ProcessBuilder(command);
+           List<String> command = List.of("cmd", "/c", "bash", "-c", unixPath);
+            //ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", unixPath);
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();
 
             InputStream inputStream = process.getInputStream();
